@@ -2,13 +2,14 @@
 
 ## Overview
 
-### Introduction:
+### Introduction
 
 [Alpaca 7B](https://crfm.stanford.edu/2023/03/13/alpaca.html) is an instruction-following model.
 
 There are two important challenges to training a high-quality instruction-following model under an academic budget: **a strong pretrained language model** and **high-quality instruction-following data**. The first challenge is addressed with the recent release of Meta’s new [LLaMA](https://arxiv.org/abs/2212.10560) models. For the second challenge, the [self-instruct](https://arxiv.org/abs/2212.10560) paper suggests using an existing strong language model to automatically generate instruction data. In particular, Alpaca is a language model fine-tuned using supervised learning from a LLaMA 7B model on 52K instruction-following demonstrations generated from OpenAI’s text-davinci-003.
 
 ### Motivation and Challenges
+
 Instruction-following models like GPT-3.5 (text-davinci-003), ChatGPT, Claude, and Bing Chat are powerful but still exhibit issues such as generating false information, social biases, and toxic language. Academic research on these models has been challenging due to the lack of accessible models comparable to proprietary systems like text-davinci-003. Alpaca aims to fill this gap by providing an accessible and research-oriented alternative.
 
 ### Training recipe
@@ -153,6 +154,7 @@ Built on the data generation pipeline from self-instruct and made the following 
 * Note the given training script is meant to be simple and easy to use, and is not particularly optimized. To run on more gpus, you may prefer to turn down `gradient_accumulation_steps` to keep a global batch size of 128. Global batch size has not been tested for optimality.
 
 ### Addressing OOM
+
 **Naively, fine-tuning a 7B model requires about 7 x 4 x 4 = 112 GB of VRAM.**
 Commands given above enable parameter sharding, so no redundant model copy is stored on any GPU. If you'd like to further reduce the memory footprint, here are some options:
 
@@ -188,8 +190,7 @@ pip install deepspeed
 
 ## Code
 
-* These files cover a range of functionalities, including **machine learning model training**, **token management**, **dataset preparation**, **interaction with the OpenAI API**, and **JSON handling**. 
-
+* These files cover a range of functionalities, including **machine learning model training**, **token management**, **dataset preparation**, **interaction with the OpenAI API**, and **JSON handling**.
 
 ### `train.py`
 
@@ -282,14 +283,3 @@ Recover Original Weights: Recovers the original tuned model's weights by adding 
 |Version Control and Updates|Multiple versions of fine-tuned models may be produced during development and optimization. Storing and distributing weight differential files facilitates easier management and tracking of changes in different versions. By storing the original model and a series of differential files, all versions of fine-tuned models can be reconstructed without storing each version's complete model.|
 
 * The `utils` function receives and parses input prompts and decoding parameters. It processes input prompts in batches and calls the OpenAI API to generate text batch by batch. It handles errors that may occur during API calls, such as rate limit errors, and performs appropriate retries. Depending on user requirements, it returns the generated text or the complete API response object. Through these steps, the`utils` function implements a flexible and reliable interface for invoking the OpenAI API for text generation.
-
-
-
-
-
-
-
-
-
-
-
