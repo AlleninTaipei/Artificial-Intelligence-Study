@@ -6,6 +6,12 @@
 
 By studying this practical example to gain a deeper understanding of artificial intelligence and large language models.
 
+---
+
+## LLM Roadmap
+
+The LLM roadmap is divided into three main sections: LLM Fundamentals, LLM Scientist, and LLM Engineer. Each section covers essential topics and skills necessary for understanding, developing, and deploying large language models (LLMs).
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
