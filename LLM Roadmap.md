@@ -15,7 +15,7 @@
 ||Evaluation|Traditional metrics, General benchmarks, Task-specific benchmarks, Human evaluation|
 ||Quantization|Base techniques, GGUF and llama.cpp, GPTQ and EXL2, AWQ|
 ||New Trends|Positional embeddings, Model merging, Mixture of Experts, Multimodal models|
-|LLM Engineer Roadmap|Running LLMs|[LLM APIs](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#llm-apis), Open-source LLMs, Prompt engineering, Structuring outputs|
+|LLM Engineer Roadmap|[Running LLMs](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#Running LLMs)|LLM APIs, Open-source LLMs, Prompt engineering, Structuring outputs|
 ||Building a Vector Storage|Ingesting documents, Splitting documents, Embedding models|
 ||Retrieval Augmented Generation|Orchestrators, Retrievers, Memory, Evaluation|
 ||Advanced RAG|Query construction, Agents and tools, Post-processing, Program LLMs|
@@ -25,7 +25,7 @@
 
 ---
 
-## LLM APIs
+## Running LLMs
 * The Large Language Model API stands as a technical interaction with sophisticated AI systems capable of processing, comprehending, and generating human language. These APIs act as a channel between the intricate algorithms of LLM performance and various applications, enabling seamless integration of language processing functionalities into software solutions.
 
 |LLM APIs||
