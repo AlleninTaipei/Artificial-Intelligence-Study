@@ -16,7 +16,7 @@
 ||Quantization|Base techniques, GGUF and llama.cpp, GPTQ and EXL2, AWQ|
 ||New Trends|Positional embeddings, Model merging, Mixture of Experts, Multimodal models|
 |LLM Engineer Roadmap|[Running LLMs](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#running-llms)|LLM APIs, Open-source LLMs, Prompt engineering, Structuring outputs|
-||Building a Vector Storage|Ingesting documents, Splitting documents, Embedding models|
+||[Building a Vector Store](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#building-a-vector-store)|Ingesting documents, Splitting documents, Embedding models|
 ||Retrieval Augmented Generation|Orchestrators, Retrievers, Memory, Evaluation|
 ||Advanced RAG|Query construction, Agents and tools, Post-processing, Program LLMs|
 ||Inference Optimization|Flash Attention, Key-value cache, Speculative decoding|
@@ -28,11 +28,13 @@
 ## Running LLMs
 * The Large Language Model API stands as a technical interaction with sophisticated AI systems capable of processing, comprehending, and generating human language. These APIs act as a channel between the intricate algorithms of LLM performance and various applications, enabling seamless integration of language processing functionalities into software solutions.
 
-|Running LLMs||
-|-|-|
-|LLM APIs|Private LLMs: [OpenAI](https://platform.openai.com/), [Google](https://cloud.google.com/vertex-ai/docs/generative-ai/learn/overview), [Anthropic](https://docs.anthropic.com/claude/reference/getting-started-with-the-api), [Cohere](https://docs.cohere.com/docs)|
-|Open-source LLMs|[OpenRouter](https://openrouter.ai/), [Hugging Face](https://huggingface.co/inference-api), [Together AI](https://www.together.ai/)<br>The [Hugging Face Hub](https://huggingface.co/models) is a great place to find LLMs. You can directly run some of them in [Hugging Face Spaces](https://huggingface.co/spaces), or download and run them locally in apps like [LM Studio](https://lmstudio.ai/) or through the CLI with [llama.cpp](https://github.com/ggerganov/llama.cpp) or [Ollama](https://ollama.ai/).|
-|Prompt engineering|[Prompt engineering guide](https://www.promptingguide.ai/)<br>Common techniques include zero-shot prompting, few-shot prompting, chain of thought, and ReAct. They work better with bigger models, but can be adapted to smaller ones.|
-|Structuring outputs|Many tasks require a structured output, like a strict template or a JSON format. Libraries like [LMQL](https://lmql.ai/), [Outlines](https://github.com/outlines-dev/outlines), [Guidance](https://github.com/guidance-ai/guidance), etc. can be used to guide the generation and respect a given structure.|
+* LLM APIs: [OpenAI](https://platform.openai.com/), [Google](https://cloud.google.com/vertex-ai/docs/generative-ai/learn/overview), [Anthropic](https://docs.anthropic.com/claude/reference/getting-started-with-the-api), [Cohere](https://docs.cohere.com/docs)
+* Open-source LLMs: [OpenRouter](https://openrouter.ai/), [Hugging Face](https://huggingface.co/inference-api), [Together AI](https://www.together.ai/)
+* [Hugging Face Hub](https://huggingface.co/models), [Hugging Face Spaces](https://huggingface.co/spaces), AP:[LM Studio](https://lmstudio.ai/)
+* Command Line Interface (CLI) : [llama.cpp](https://github.com/ggerganov/llama.cpp), [Ollama](https://ollama.ai/).
+* [Prompt engineering guide](https://www.promptingguide.ai/)
+* Generat and respect a given structure, example:JSON file. [LMQL](https://lmql.ai/), [Outlines](https://github.com/outlines-dev/outlines), [Guidance](https://github.com/guidance-ai/guidance)
 
-
+## Building a Vector Store
+* Vector stores contain embedding vectors of ingested document chunks. A vector store takes care of storing embedded data and performing vector search for you.
+* [LocalGPT](https://github.com/PromtEngineer/localGPT)
