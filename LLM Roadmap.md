@@ -19,8 +19,8 @@
 ||[Building a Vector Store](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#building-a-vector-store)|Ingesting documents, Splitting documents, Embedding models,Vector databases|
 ||[RAG](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#rag)|Framworks, Retrievers, Conversational memory, Evaluation|
 ||[Advanced RAG](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#advanced-rag)|Query construction, Agents and tools, Pre-retrieval and Post-retrieval, Program LLMs|
-||Inference Optimization|Flash Attention, Key-value cache, Speculative decoding|
-||Deploying LLMs|Local deployment, Demo deployment, Server deployment, Edge deployment|
+||[Inference Optimization](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#inference-optimization)|Flash Attention, Key-value cache, Speculative decoding|
+||[Deploying LLMs](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#deployinh-llms)|Local deployment, Demo deployment, Server deployment, Edge deployment|
 ||Securing LLMs|Prompt hacking, Backdoors, Defensive measures|
 
 ---
@@ -75,9 +75,29 @@
 
 * Naive RAG mainly consists of three parts: indexing, retrieval and generation. Advanced RAG proposes multiple optimization strategies around pre-retrieval and post-retrieval, with a process similar to the Naive RAG, still following a chain-like structure.
 
-|Advanced RAG|-|
+|Advanced RAG|Example: [LangChain - OpenAI's RAG](https://blog.langchain.dev/applying-openai-rag/)|
 |-|-|
-|Query construction|Query construction is taking a natural language query and converting it into the query language of the database you are interacting with.|
+|Query construction|Query construction is taking a natural language query and converting it into the query language of the database you are interacting with.<br>[LangChain - Query Construction](https://blog.langchain.dev/query-construction/)|
 |Agents and tools|We can use tools like SQL agents to recover from errors.|
-|Pre-retrieval and Post-retrieval||
-|Program LLMs||
+|Pre-retrieval|The primary focus is on optimizing the indexing structure and the original query.|
+|Post-retrieval|Once relevant context is retrieved, it’s crucial to integrate it effectively with the query. The main methods in post-retrieval process include rerank chunks and context compressing. Re-ranking the retrieved information to relocate the most relevant content to the edges of the prompt is a key strategy.<br>[RAG-fusion](https://github.com/Raudaschl/rag-fusion)|
+|Program LLMs|Framework [DSPy](https://github.com/stanfordnlp/dspy) is a framework for algorithmically optimizing LM prompts and weights, especially when LMs are used one or more times within a pipeline.|
+
+### Inference Optimization
+
+* Basic inference is slow because LLMs have to be called repeatedly to generate the next token. The input sequence increases as generation progresses, which takes longer and longer for the LLM to process. LLMs also have billions of parameters, making it a challenge to store and handle all those weights in memory.
+
+|Inference Optimization||
+|-|-|
+|Flash Attention|A known issue with transformer models is that the self-attention mechanism grows quadratically in compute and memory with the number of input tokens. This limitation is only magnified in LLMs which handles much longer sequences. To address this FlashAttention and FlashAttention-2 break up the attention computation into smaller chunks and reduces the number of intermediate read/write operations to GPU memory to speed up inference.<br>[Optimizing LLMs for Speed and Memory](https://huggingface.co/docs/transformers/main/en/llm_tutorial_optimization)|
+|Key-value cache|KV caching, the decode phase generates a single token at each time step, but each token depends on the key and value tensors of all previous tokens.<br>[Multi-Query Attention](https://arxiv.org/abs/1911.02150) (MQA) and [Grouped-Query Attention](https://arxiv.org/abs/2305.13245) (GQA)|
+|Speculative decoding|Each input token you need to load the model weights each time during the forward pass. Speculative decoding alleviates this slowdown by using a second smaller and faster assistant model to generate candidate tokens that are verified by the larger LLM in a single forward pass.|
+
+### Deploying LLMs
+
+|Deploying LLMs||
+|-|-|
+|Local deployment||
+|Demo deployment||
+|Server deployment||
+|Edge deployment||
