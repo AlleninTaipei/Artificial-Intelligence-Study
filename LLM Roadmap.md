@@ -52,9 +52,9 @@
 ### Building a Vector Store
 * Vector stores contain embedding vectors of ingested document chunks. A vector store takes care of storing embedded data and performing vector search for you.
  
-|Building a Vector Store|[LocalGPT](https://github.com/PromtEngineer/localGPT)|
+|Building a Vector Store|Example: [LocalGPT](https://github.com/PromtEngineer/localGPT)|
 |-|-|
-|Ingesting documents|ingest.py: Ingest or feed information from local files into the knowledge base of local LLM.|
+|Ingesting documents|`ingest.py`: Ingest or feed information from local files into the knowledge base of local LLM.|
 |Splitting documents|Whether in the form of text, PDF, CSV, or Excel files, pass them on to `LangChain` `text_splitter`, so each of the document is going to be divided into multiple chunks.|
 |Embedding model|Compute embeddings for each chunk and create a semantic index using `ChromaDB`.|
 |Vector databases|([Chroma](https://www.trychroma.com/), [Pinecone](https://www.pinecone.io/), [Milvus](https://milvus.io/), [FAISS](https://faiss.ai/), [Annoy](https://github.com/spotify/annoy), etc.) are designed to store embedding vectors.|
