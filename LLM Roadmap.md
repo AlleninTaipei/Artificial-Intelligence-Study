@@ -17,7 +17,7 @@
 ||New Trends|Positional embeddings, Model merging, Mixture of Experts, Multimodal models|
 |LLM Engineer Roadmap|[Running LLMs](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#running-llms)|LLM APIs, Open-source LLMs, Prompt engineering, Structuring outputs|
 ||[Building a Vector Store](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#building-a-vector-store)|Ingesting documents, Splitting documents, Embedding models,Vector databases|
-||[RAG](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#rag)|Orchestrators, Retrievers, Memory, Evaluation|
+||[RAG](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#rag)|Framworks, Retrievers, Memory, Evaluation|
 ||Advanced RAG|Query construction, Agents and tools, Post-processing, Program LLMs|
 ||Inference Optimization|Flash Attention, Key-value cache, Speculative decoding|
 ||Deploying LLMs|Local deployment, Demo deployment, Server deployment, Edge deployment|
@@ -61,4 +61,11 @@
 
 ### RAG
 * Retrieval augmented generation (RAG),	combines a Large Language Model with external knowledge retrieval.
+* Large Language Models (LLMs) showcase impressive capabilities but encounter challenges like hallucination, outdated knowledge, and non-transparent, untraceable reasoning processes. Retrieval-Augmented Generation (RAG) has emerged as a promising solution by incorporating knowledge from external databases. This enhances the accuracy and credibility of the generation, particularly for knowledge-intensive tasks, and allows for continuous knowledge updates and integration of domain-specific information. RAG synergistically merges LLMs' intrinsic knowledge with the vast, dynamic repositories of external databases.
 
+|RAG||
+|-|-|
+|Framworks|[LangChain](https://python.langchain.com/docs/get_started/introduction), [LlamaIndex](https://docs.llamaindex.ai/en/stable/)|
+|Retrieval|The RAG framework's efficiency hinges on optimizing retrieval sources, granularity, indexing, query handling, and embedding models. Advances in these areas continue to enhance the performance and applicability of LLMs across diverse tasks and domains.|
+|Memory||
+|Evaluation||
