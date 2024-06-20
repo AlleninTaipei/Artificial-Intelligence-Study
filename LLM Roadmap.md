@@ -2,11 +2,13 @@
 
 |Roadmap Section|Subsection|Topics|
 |-|-|-|
-|LLM Fundamentals Roadmap|Mathematics for Machine Learning|Linear Algebra, Calculus, Probability and Statistics|
-||Python for Machine Learning|Python Basics, Data Science Libraries, Data Preprocessing|
-||Machine Learning|Supervised Learning, Unsupervised Learning, Model Evaluation|
-||Neural Networks|Fundamentals, Training and Optimization, Overfitting, Implement an MLP|
-||Natural Language Processing|Text Preprocessing, Feature Extraction Techniques, Word Embeddings, Recurrent Neural Networks|
+|LLM Engineer Roadmap|[Running LLMs](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#running-llms)|LLM APIs, Open-source LLMs, Prompt engineering, Structuring outputs|
+||[Building a Vector Store](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#building-a-vector-store)|Ingesting documents, Splitting documents, Embedding models,Vector databases|
+||[RAG](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#rag)|Framworks, Retrievers, Conversational memory, Evaluation|
+||[Advanced RAG](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#advanced-rag)|Query construction, Agents and tools, Pre-retrieval and Post-retrieval, Program LLMs|
+||[Inference Optimization](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#inference-optimization)|Flash Attention, Key-value cache, Speculative decoding|
+||[Deploying LLMs](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#deploying-llms)|Local deployment, Demo deployment, Server deployment, Edge deployment|
+||[Securing LLMs](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#securing-llms)|Prompt hacking, Backdoors, Defenses and Evaluations|
 |LLM Scientist Roadmap|The LLM Architecture|High-level view, Tokenization, Attention mechanisms, Text generation|
 ||Building an Instruction Dataset|Alpaca-like dataset, Advanced techniques, Filtering data, Prompt templates|
 ||Pre-training Models|Data pipeline, Causal language modeling, Scaling laws, High-Performance Computing|
@@ -15,21 +17,11 @@
 ||Evaluation|Traditional metrics, General benchmarks, Task-specific benchmarks, Human evaluation|
 ||Quantization|Base techniques, GGUF and llama.cpp, GPTQ and EXL2, AWQ|
 ||New Trends|Positional embeddings, Model merging, Mixture of Experts, Multimodal models|
-|LLM Engineer Roadmap|[Running LLMs](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#running-llms)|LLM APIs, Open-source LLMs, Prompt engineering, Structuring outputs|
-||[Building a Vector Store](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#building-a-vector-store)|Ingesting documents, Splitting documents, Embedding models,Vector databases|
-||[RAG](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#rag)|Framworks, Retrievers, Conversational memory, Evaluation|
-||[Advanced RAG](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#advanced-rag)|Query construction, Agents and tools, Pre-retrieval and Post-retrieval, Program LLMs|
-||[Inference Optimization](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#inference-optimization)|Flash Attention, Key-value cache, Speculative decoding|
-||[Deploying LLMs](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#deploying-llms)|Local deployment, Demo deployment, Server deployment, Edge deployment|
-||Securing LLMs|Prompt hacking, Backdoors, Defensive measures|
-
----
-
-## LLM Fundamentals Roadmap
-
----
-
-## LLM Scientist Roadmap
+|LLM Fundamentals Roadmap|Mathematics for Machine Learning|Linear Algebra, Calculus, Probability and Statistics|
+||Python for Machine Learning|Python Basics, Data Science Libraries, Data Preprocessing|
+||Machine Learning|Supervised Learning, Unsupervised Learning, Model Evaluation|
+||Neural Networks|Fundamentals, Training and Optimization, Overfitting, Implement an MLP|
+||Natural Language Processing|Text Preprocessing, Feature Extraction Techniques, Word Embeddings, Recurrent Neural Networks|
 
 ---
 
@@ -97,7 +89,23 @@
 
 |Deploying LLMs||
 |-|-|
-|Local deployment||
-|Demo deployment||
-|Server deployment||
-|Edge deployment||
+|Local deployment|[LM Studio](https://lmstudio.ai/), [Ollama](https://ollama.ai/), [oobabooga](https://github.com/oobabooga/text-generation-webui), [kobold.cpp](https://github.com/LostRuins/koboldcpp)|
+|Demo deployment|[Gradio](https://www.gradio.app/), [Streamlit](https://docs.streamlit.io/)|
+|Server deployment|[SkyPilot](https://skypilot.readthedocs.io/en/latest/), [TGI](https://github.com/huggingface/text-generation-inference), [vLLM](https://github.com/vllm-project/vllm/tree/main)|
+|Edge deployment|[MLC LLM](https://github.com/mlc-ai/mlc-llm), [mnn-llm](https://github.com/wangzhaode/mnn-llm/blob/master/README_en.md)|
+
+### Securing LLMs
+
+|Securing LLMs||
+|-|-|
+|Prompt hacking|The central focus of prompt hacking is the strategic manipulation of inputs or prompts given to Language Models (LLMs). These prompts act as instructions or queries to elicit specific responses from the AI system. By carefully crafting prompts that exploit the model's weaknesses, prompt hackers can influence the generated content in ways that may not align with the intended purpose of the AI system. This manipulation can result in misinformation, biased outputs, or even security breaches, depending on the context and intent of the attack.|
+|Backdoors|A backdoored language model might be used to spread misinformation, exploit personal data, or influence user decisions based on skewed or biased responses. This kind of vulnerability in language models is particularly concerning due to their widespread use and the growing trust users place in their responses.|
+|Defenses and Evaluations|Red-team attacks are effective against unaligned LLMs but are ineffective against LLMs with builtin security.<br>[garak](https://github.com/leondz/garak/), [langfuse](https://github.com/langfuse/langfuse)|
+
+---
+
+## LLM Scientist Roadmap
+
+---
+
+## LLM Fundamentals Roadmap
