@@ -114,7 +114,9 @@
 |On-chip Memory Utilization|These techniques focus on maximizing the use of fast on-chip memory, such as GPU registers and shared memory. By keeping intermediate computations within the GPU’s fast memory, they reduce the need to access slower global memory, thereby speeding up the computation.|
 |Chunking Strategy|The attention mechanism is broken down into smaller chunks to fit within the on-chip memory. This minimizes data transfers between the GPU and its global memory, which is one of the main performance bottlenecks.|
 |Efficient Memory Access Patterns|By optimizing how data is accessed and stored during computation, FlashAttention and FlashAttention-2 reduce memory latency and bandwidth usage. This includes techniques like memory coalescing and exploiting sparsity in attention matrices.|
-|**Role of NVMe SSDs**|NVMe SSDs are high-speed storage devices that offer significantly faster read and write speeds compared to traditional HDDs and even older SSDs.|
+
+|Role of NVMe SSDs|NVMe SSDs are high-speed storage devices that offer significantly faster read and write speeds compared to traditional HDDs and even older SSDs.|
+|-|-|
 |Reduce Data Loading Times|NVMe SSDs can dramatically speed up the loading of large datasets and models from storage to RAM. This is particularly beneficial during the initial stages of training or inference when large amounts of data need to be loaded into memory.|
 |Improve I/O Performance|For applications that require frequent access to large datasets stored on disk, NVMe SSDs can reduce the time spent on I/O operations.|
 |**Why FlashAttention Doesn’t Directly Use NVMe SSDs**||
