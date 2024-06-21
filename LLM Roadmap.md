@@ -136,7 +136,7 @@
 |Handling Large Datasets|When dealing with massive datasets that do not fit entirely in RAM, NVMe SSDs can act as a high-speed buffer. This is especially useful for data-intensive tasks like training LLMs on extensive text corpora, where frequent data access is necessary.|
 |Model Loading and Initialization|Loading large models from storage can be time-consuming. NVMe SSDs speed up this process, reducing the initialization time for inference or training sessions. This is beneficial when deploying models in environments where quick startup times are essential.|
 |Data Augmentation and Pipeline Efficiency|Data augmentation techniques, which often require loading and processing large amounts of data, benefit from the high throughput of NVMe SSDs. This results in faster data pipelines and more efficient use of computational resources.|
-|Example Implementations||
+|**Example Implementations**||
 |TorchElastic|In PyTorch's distributed training framework, TorchElastic, NVMe SSDs can be used to store and quickly access datasets and checkpoints, improving the efficiency of distributed training jobs.|
 |Hugging Face Transformers|When fine-tuning or deploying transformers from the Hugging Face library, models and datasets can be stored on NVMe SSDs to accelerate loading times and reduce latency during inference.|
 |Conclusion|While FlashAttention and FlashAttention-2 optimize GPU memory and computation, NVMe SSDs provide significant benefits for LLM tasks related to data loading, preprocessing, and checkpointing. Leveraging NVMe SSDs can lead to faster initialization, reduced latency, and more efficient data handling, making them a valuable component in the overall infrastructure for training and deploying large language models.|
@@ -151,7 +151,7 @@
 |Input Token Processing|During the decoding phase, the model processes input tokens to generate the next token in the sequence. Flash Decoding optimizes this step by using chunking and parallel processing to handle multiple tokens simultaneously.|
 |Intermediate Computations|Intermediate results, such as the logits for each token, are computed and stored in fast on-chip memory. This reduces the number of read/write operations to slower global memory, which can be a significant bottleneck.|
 |Output Token Generation|The next token is generated based on the processed input tokens and intermediate computations. This process is repeated iteratively to generate the entire sequence, with each step being optimized for speed and memory efficiency.|
-|Practical Implications||
+|**Practical Implications**||
 |Faster Inference|By reducing the computational overhead and latency associated with the decoding process, Flash Decoding enables faster inference times. This is particularly beneficial for applications that require rapid generation of text, such as chatbots, virtual assistants, and interactive storytelling.|
 |Resource Efficiency|Optimizing memory usage and computational efficiency means that the same hardware can handle larger models or more concurrent requests, improving the overall throughput of the system.|
 |Scalability|Flash Decoding can be scaled to work with larger models and datasets, making it suitable for state-of-the-art language models that require significant computational resources.|
