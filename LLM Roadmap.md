@@ -160,6 +160,37 @@
 |Flash Decoding|Optimizes the generation of tokens during the decoding phase, reducing latency and improving throughput.|
 |Conclusion|Flash Decoding is a powerful technique for accelerating the inference phase of transformer-based language models. By optimizing memory access patterns and leveraging the parallel processing capabilities of GPUs, it reduces latency and improves computational efficiency, making it an essential tool for real-time applications and large-scale deployments of language models.|
 
+* When comparing different techniques used in Large Language Models (LLMs) for their VRAM size efficiency and training time performance, it's important to consider a variety of methods and optimizations.
+
+|VRAM Size Efficiency|Efficiency Ranking|Reason|
+|-|-|-|
+|FlashAttention/FlashAttention-2|High|By breaking the attention computation into smaller chunks and reducing intermediate read/write operations, FlashAttention optimizes memory usage, significantly lowering the VRAM requirements.|
+|Mixed Precision Training (FP16/BFloat16)|High|Mixed precision training uses 16-bit floats instead of 32-bit floats, effectively halving the memory requirements for storing weights and activations, thus reducing VRAM usage.|
+|Gradient Checkpointing|High|This technique saves memory by recomputing intermediate activations during the backward pass instead of storing them, reducing VRAM consumption at the cost of additional computation.|
+|Memory Mapping and Swapping (Offloading)|Moderate|Techniques like ZeRO-Offload (used in DeepSpeed) offload certain parts of the model to CPU memory, reducing VRAM usage but potentially increasing data transfer overhead.|
+|Model Parallelism (Tensor and Pipeline Parallelism)|Variable|Distributes the model across multiple GPUs to fit larger models into memory. The efficiency depends on the inter-GPU communication overhead and the model architecture.|
+
+|Training Time Performance|Result|Reason|
+|-|-|-|
+|Mixed Precision Training (FP16/BFloat16)|Improved|Reduces the amount of data being processed per operation, leading to faster computations and reduced training times, especially on hardware that supports native mixed-precision operations.|
+|FlashAttention/FlashAttention-2|Improved|Optimizes the attention mechanism to reduce computational overhead and memory bottlenecks, resulting in faster training iterations.|
+|Gradient Checkpointing|Increased|While it reduces memory usage, it introduces additional computation during the backward pass to recompute intermediate activations, which can slow down training.|
+|Data Parallelism|Improved|Distributes the training data across multiple GPUs, enabling parallel processing and faster training. However, efficiency gains are dependent on the communication overhead between GPUs.|
+|Model Parallelism (Tensor and Pipeline Parallelism)|Variable|Can improve training times by utilizing multiple GPUs to handle larger models, but the inter-GPU communication can become a bottleneck, especially for fine-grained parallelism.|
+
+|Technique|VRAM Size Efficiency|Training Time Performance|
+|-|-|-|
+|FlashAttention/FlashAttention-2|High|Improved|
+|Mixed Precision Training (FP16)|High|Improved|
+|Gradient Checkpointing|High|Increased|
+|Memory Mapping and Swapping|Moderate|Variable|
+|Model Parallelism|Variable|Variable|
+|Data Parallelism|Moderate|Improved|
+
+* High VRAM Efficiency: Techniques like FlashAttention, mixed precision training, and gradient checkpointing are highly effective at reducing VRAM usage, making them suitable for running larger models on hardware with limited memory.
+Improved Training Time: Mixed precision training and FlashAttention stand out for improving training time performance by optimizing computations and memory usage.
+Selecting the right technique depends on the specific constraints and requirements of the training environment, such as available hardware resources and the need to balance between memory efficiency and computational speed.
+
 ### Deploying LLMs
 
 |Deploying LLMs||
