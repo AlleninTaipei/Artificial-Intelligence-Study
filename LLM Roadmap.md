@@ -225,16 +225,15 @@ Selecting the right technique depends on the specific constraints and requiremen
 
 * [OpenAI Tokenizer](https://platform.openai.com/tokenizer)
 
-
 #### Attention mechanism
 
 * The attention mechanism was born to help memorize long source sentences in neural machine translation (NMT). Rather than building a single context vector out of the encoder’s last hidden state, the secret sauce invented by attention is to create shortcuts between the context vector and the entire source input. The weights of these shortcut connections are customizable for each output element.
 * While the context vector has access to the entire input sequence, we don’t need to worry about forgetting. The alignment between the source and target is learned and controlled by the context vector. Essentially the context vector consumes three pieces of information: encoder hidden states, decoder hidden states and alignment between source and target.
+* Self-attention helps the model focus on important parts of the input data by weighing the relevance of different words in a sequence. Involves calculating query, key, and value vectors for words, and using these to determine attention weights through a softmax function. Multi-head attention extends this mechanism by performing multiple self-attention operations in parallel, capturing various aspects of input.
 
 #### Text Generation
 
 * This task covers guides on both text-generation and text-to-text generation models. Popular large language models that are used for chats or following instructions are also covered in this task. You can find the list of selected open-source large language models here, ranked by their performance scores.
-
 * Instruction Models: A model trained for text generation can be later adapted to follow instructions.
 
 ---
