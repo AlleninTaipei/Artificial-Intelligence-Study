@@ -9,7 +9,7 @@
 ||[Inference Optimization](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#inference-optimization)|Flash Attention, Key-value cache, Speculative decoding|
 ||[Deploying LLMs](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#deploying-llms)|Local deployment, Demo deployment, Server deployment, Edge deployment|
 ||[Securing LLMs](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#securing-llms)|Prompt hacking, Backdoors, Defenses and Evaluations|
-|LLM Scientist Roadmap|The LLM Architecture|High-level view, Tokenization, Attention mechanisms, Text generation|
+|LLM Scientist Roadmap|[The LLM Architecture](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#the-llm-architecture)|Transformer, Tokenization, Attention mechanisms, Text generation|
 ||Building an Instruction Dataset|Alpaca-like dataset, Advanced techniques, Filtering data, Prompt templates|
 ||Pre-training Models|Data pipeline, Causal language modeling, Scaling laws, High-Performance Computing|
 ||Supervised Fine-Tuning|Full fine-tuning, LoRA, QLoRA, DeepSpeed|
@@ -211,6 +211,31 @@ Selecting the right technique depends on the specific constraints and requiremen
 ---
 
 ## LLM Scientist Roadmap
+
+### The LLM Architecture
+
+#### Transformer
+
+* [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
+* Introduced in 2017, replaced the traditional recurrent neural network (RNN) architecture in machine translation tasks and became the state-of-the-art model. The core components are the Encoder, the Decoder, and the attention mechanism within these modules.
+* The Transformer architecture consists of an encoder and a decoder, each of which is composed of several layers. Each layer consists of two sub-layers: a multi-head self-attention mechanism and a feed-forward neural network. The multi-head self-attention mechanism allows the model to attend to different parts of the input sequence, while the feed-forward network applies a point-wise fully connected layer to each position separately and identically.
+* The power of the transformer architecture lies in its ability to learn the relevance and context of all of the words in a sentence. Each word next to its neighbor and to every other word in a sentence. To apply attention weights to those relationships so that the model learns the relevance of each word to each other. These attention weights are learned during LLMs training.
+
+#### Tokenization
+
+* [OpenAI Tokenizer](https://platform.openai.com/tokenizer)
+
+
+#### Attention mechanism
+
+* The attention mechanism was born to help memorize long source sentences in neural machine translation (NMT). Rather than building a single context vector out of the encoder’s last hidden state, the secret sauce invented by attention is to create shortcuts between the context vector and the entire source input. The weights of these shortcut connections are customizable for each output element.
+* While the context vector has access to the entire input sequence, we don’t need to worry about forgetting. The alignment between the source and target is learned and controlled by the context vector. Essentially the context vector consumes three pieces of information: encoder hidden states, decoder hidden states and alignment between source and target.
+
+#### Text Generation
+
+* This task covers guides on both text-generation and text-to-text generation models. Popular large language models that are used for chats or following instructions are also covered in this task. You can find the list of selected open-source large language models here, ranked by their performance scores.
+
+* Instruction Models: A model trained for text generation can be later adapted to follow instructions.
 
 ---
 
