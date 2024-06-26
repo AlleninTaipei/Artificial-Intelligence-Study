@@ -3,20 +3,20 @@
 |Roadmap Section|Subsection|Topics|
 |-|-|-|
 |LLM Engineer Roadmap|[Running LLMs](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#running-llms)|LLM APIs, Open-source LLMs, Prompt engineering, Structuring outputs|
-||[Building a Vector Store](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#building-a-vector-store)|Ingesting documents, Splitting documents, Embedding models,Vector databases|
+||[Vector Store](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#vector-store)|Ingesting documents, Splitting documents, Embedding models,Vector databases|
 ||[RAG](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#rag)|Framworks, Retrievers, Conversational memory, Evaluation|
 ||[Advanced RAG](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#advanced-rag)|Query construction, Agents and tools, Pre-retrieval and Post-retrieval, Program LLMs|
 ||[Inference Optimization](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#inference-optimization)|Flash Attention, Key-value cache, Speculative decoding|
 ||[Deploying LLMs](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#deploying-llms)|Local deployment, Demo deployment, Server deployment, Edge deployment|
 ||[Securing LLMs](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#securing-llms)|Prompt hacking, Backdoors, Defenses and Evaluations|
 |LLM Scientist Roadmap|[The LLM Architecture](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#the-llm-architecture)|Transformer, Tokenization, Attention mechanisms, Text generation|
-||Building an Instruction Dataset|Alpaca-like dataset, Advanced techniques, Filtering data, Prompt templates|
-||Pre-training Models|Data pipeline, Causal language modeling, Scaling laws, High-Performance Computing|
-||Supervised Fine-Tuning|Full fine-tuning, LoRA, QLoRA, DeepSpeed|
-||Preference Alignment|Preference datasets, Proximal Policy Optimization, Direct Preference Optimization|
-||Evaluation|Traditional metrics, General benchmarks, Task-specific benchmarks, Human evaluation|
-||Quantization|Base techniques, GGUF and llama.cpp, GPTQ and EXL2, AWQ|
-||New Trends|Positional embeddings, Model merging, Mixture of Experts, Multimodal models|
+||[Instruction Dataset](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#instruction-dataset)|Alpaca-like dataset, Advanced techniques, Filtering data, Prompt templates|
+||[Pre-training Models](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#pre-traning-models)|Data pipeline, Causal language modeling, Scaling laws, High-Performance Computing|
+||[Supervised Fine-Tuning](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#supervised-fine-tuning)|Full fine-tuning, LoRA, QLoRA, DeepSpeed|
+||[Preference Alignment](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#prereference-alignment)|Preference datasets, Proximal Policy Optimization, Direct Preference Optimization|
+||[Evaluation](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#evaluation)|Traditional metrics, General benchmarks, Task-specific benchmarks, Human evaluation|
+||[Quantization](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#quantization)|Base techniques, GGUF and llama.cpp, GPTQ and EXL2, AWQ|
+||[New Trends](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#new-trends)|Positional embeddings, Model merging, Mixture of Experts, Multimodal models|
 |LLM Fundamentals Roadmap|Mathematics for Machine Learning|Linear Algebra, Calculus, Probability and Statistics|
 ||Python for Machine Learning|Python Basics, Data Science Libraries, Data Preprocessing|
 ||Machine Learning|Supervised Learning, Unsupervised Learning, Model Evaluation|
@@ -41,10 +41,10 @@
 |Prompt engineering|[Prompt engineering guide](https://www.promptingguide.ai/)|
 |Structuring outputs|LLM tasks require a structured output, example: a JSON format. [LMQL](https://lmql.ai/), [Outlines](https://github.com/outlines-dev/outlines), [Guidance](https://github.com/guidance-ai/guidance)
 
-### Building a Vector Store
+### Vector Store
 * Vector stores contain embedding vectors of ingested document chunks. A vector store takes care of storing embedded data and performing vector search for you.
  
-|Building a Vector Store|Example: [LocalGPT](https://github.com/PromtEngineer/localGPT)|
+|Vector Store|Example: [LocalGPT](https://github.com/PromtEngineer/localGPT)|
 |-|-|
 |Ingesting documents|`ingest.py`: Ingest or feed information from local files into the knowledge base of local LLM.|
 |Splitting documents|Whether in the form of text, PDF, CSV, or Excel files, pass them on to `LangChain` `text_splitter`, so each of the document is going to be divided into multiple chunks.|
@@ -236,7 +236,7 @@ Selecting the right technique depends on the specific constraints and requiremen
 * This task covers guides on both text-generation and text-to-text generation models. Popular large language models that are used for chats or following instructions are also covered in this task. You can find the list of selected open-source large language models here, ranked by their performance scores.
 * Instruction Models: A model trained for text generation can be later adapted to follow instructions.
 
-### Building an Instruction Dataset
+### Instruction Dataset
 
 #### Alpaca-like dataset
 
@@ -249,7 +249,7 @@ Selecting the right technique depends on the specific constraints and requiremen
 * Designed for fine-tuning large language models
 * Often created through self-instruct methods or human curation
 
-|Common techniques||
+|Dataset|Advanced techniques||
 |-|-|
 |Self-instruct method|Using a large language model to generate its own training data
 ||Iterative process of generating instructions, responses, and refining them|
@@ -314,7 +314,15 @@ Selecting the right technique depends on the specific constraints and requiremen
 >Summarize the following {text_type} in {number} sentences:
 >{input_text}
 
-### Pre-training Models	
+### Pre-training Models
+
+|LLMS|Pre-training Models|
+|-|-|
+|Data pipeline|A data pipeline refers to the series of processes and tools used to collect, process, and transform raw data into a format suitable for training machine learning models. For language models, this typically involves gathering text data from various sources, cleaning and preprocessing it, and converting it into a format the model can ingest.|
+|Causal language modeling|This is a type of language modeling where the task is to predict the next word or token in a sequence, given the previous words. It's "causal" because it only looks at past context to make predictions, not future context. This approach is fundamental to many large language models, including GPT (Generative Pre-trained Transformer) models.|
+|[Scaling laws](https://github.com/AlleninTaipei/Artificial-Intelligence-Introduction-for-Beginners/blob/main/LLM%20Parameters%20and%20Memory%20Estimation.md#scaling-laws)|These are empirical observations about how the performance of machine learning models, particularly language models, improves as you increase various factors such as model size, dataset size, and compute resources. Researchers have found that many aspects of model performance follow predictable patterns as these factors are scaled up.|
+|High-Performance Computing (HPC)|This refers to the use of powerful computer systems and parallel processing techniques to solve complex computational problems. In the context of large language models, HPC is crucial for training and running these models efficiently, as they require enormous amounts of computational power.|
+
 ### Supervised Fine-Tuning
 ### Preference Alignment
 ### Evaluation
