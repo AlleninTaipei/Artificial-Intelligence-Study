@@ -236,6 +236,92 @@ Selecting the right technique depends on the specific constraints and requiremen
 * This task covers guides on both text-generation and text-to-text generation models. Popular large language models that are used for chats or following instructions are also covered in this task. You can find the list of selected open-source large language models here, ranked by their performance scores.
 * Instruction Models: A model trained for text generation can be later adapted to follow instructions.
 
+### Building an Instruction Dataset
+
+#### Alpaca-like dataset
+
+* [Alpaca 7B](https://crfm.stanford.edu/2023/03/13/alpaca.html)
+* An instruction dataset is a list of pairs: instruction and answer.
+* An instruction dataset could be created in one of the following ways:
+  **Use an existing dataset and convert it into an instruction dataset.**
+  **Use existing LLMs to create an instruction dataset.**
+  **Manually create an instruction dataset.**
+* Designed for fine-tuning large language models
+* Often created through self-instruct methods or human curation
+
+|Common techniques||
+|-|-|
+|Self-instruct method|Using a large language model to generate its own training data
+||Iterative process of generating instructions, responses, and refining them|
+|Data filtering and cleaning|Removing low-quality or inappropriate content|
+||Ensuring diversity in tasks and domains|
+||Balancing different types of instructions|
+|Prompt engineering|Crafting effective instructions and prompts|
+||Ensuring clarity and specificity in the tasks|
+||Fine-tuning|Adapting pre-trained models on the Alpaca-like dataset|
+||Often using techniques like LoRA (Low-Rank Adaptation) for efficiency|
+|Evaluation|Using benchmarks to assess the model's instruction-following abilities|
+||Human evaluation of generated responses|
+|Iterative improvement|Analyzing model outputs to identify weaknesses|
+||Expanding the dataset to cover more tasks or improve performance in specific areas|
+|Ethical considerations|Ensuring the dataset and resulting model behave ethically|
+||Implementing safeguards against generating harmful content|
+
+#### Filtering data
+
+* This involves selectively processing or extracting specific information from a larger dataset based on certain criteria. It's a crucial step in data analysis and manipulation.
+
+|Filtering data||
+|-|-|
+|Definition|Data filtering is the process of selecting a subset of data from a larger dataset based on specific criteria or conditions.|
+|Common techniques|Boolean filtering: Using logical operators (AND, OR, NOT) to combine conditions|
+||Numeric filtering: Selecting data based on numerical thresholds or ranges|
+||Text-based filtering: Using string matching or regular expressions|
+||Date/time filtering: Selecting data within specific time periods|
+|Applications|Database queries|
+||Spreadsheet analysis|
+||Data cleaning and preprocessing|
+||Business intelligence and reporting|
+|Tools|SQL for relational databases|
+||Pandas library in Python|
+||Excel filters and formulas|
+||Various data analysis and visualization tools (e.g., Tableau, Power BI)|
+
+#### Prompt templates:
+
+* These are pre-designed structures for generating prompts in AI interactions. They help create consistent and effective prompts for various tasks or queries.
+
+|Prompt templates||
+|-|-|
+|Definition|Predefined structures or patterns for creating prompts to interact with AI models or generate specific types of content.|
+|Components|Fixed text: The unchanging parts of the prompt|
+||Variables: Placeholders for dynamic content|
+||Instructions: Guidance for the AI model on how to interpret or respond|
+|Benefits|Consistency in AI interactions|
+||Improved efficiency in prompt creation|
+||Better control over AI outputs|
+||Easier fine-tuning and optimization of prompts|
+|Use cases|Chatbot interactions|
+||Content generation (e.g., articles, product descriptions)|
+||Code generation and documentation|
+||Language translation|
+||Data analysis and summarization|
+|Implementation|String formatting in various programming languages|
+||Dedicated prompt engineering tools and platforms|
+||Integration with AI model APIs|
+
+>Example:
+>Summarize the following {text_type} in {number} sentences:
+>{input_text}
+
+### Pre-training Models	
+### Supervised Fine-Tuning
+### Preference Alignment
+### Evaluation
+### Quantization
+### New Trends
+
+
 ---
 
 ## LLM Fundamentals Roadmap
