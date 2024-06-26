@@ -406,3 +406,84 @@ Selecting the right technique depends on the specific constraints and requiremen
 ---
 
 ## LLM Fundamentals Roadmap
+
+### Mathematics for Machine Learning
+
+|Linear Algebra||
+|-|-|
+|Vectors|Ordered lists of numbers, representing points in space.|
+|Matrices|Rectangular arrays of numbers, representing transformations or datasets.|
+|Addition/Subtraction|Element-wise operations on vectors/matrices.|
+|Scalar Multiplication|Multiplying every element by a scalar.|
+|Matrix Multiplication|Combining transformations or datasets.|
+|Dot Product|Measure of similarity between two vectors.|
+|Cross Product|Produces a vector perpendicular to two 3D vectors.|
+|Determinant|Scalar value representing the volume scaling factor of the transformation.|
+|Inverse|Matrix that reverses the transformation of the original matrix.|
+|Transpose|Flipping a matrix over its diagonal.|
+|Eigenvalues|Scalars indicating the factor by which the eigenvector is scaled during the transformation.|
+|Eigenvectors|Vectors unchanged in direction during the transformation.|
+|Singular Value Decomposition (SVD)|Factorizes a matrix into three other matrices, revealing its structure.|
+|Principal Component Analysis (PCA)|Dimensionality reduction technique using eigenvalues and eigenvectors.|
+
+|Calculus||
+|-|-|
+|Differential Calculus|Derivatives: Measure the rate of change of a function.|
+||Partial Derivatives: Derivatives with respect to one variable in multivariable functions.|
+||Gradient: Vector of partial derivatives, indicating the direction of the steepest ascent.|
+|Integral Calculus|Integrals: Measure the area under a curve, representing accumulation of quantities.|
+||Definite Integrals: Evaluate the net area between two points.|
+||Indefinite Integrals: General form representing antiderivatives.|
+|Optimization|Gradient Descent: Iterative method to find the minimum of a function using gradients.|
+||Convex Functions: Functions where any local minimum is a global minimum.|
+
+|Probability||
+|-|-|
+|Basic Concepts|Random Variables: Variables that take on different values randomly.|
+||Probability Distributions: Functions that describe the likelihood of different outcomes.|
+||Expected Value: Mean of a random variable's probability distribution.|
+||Variance: Measure of the spread of a distribution.|
+|Distributions|Discrete Distributions: Such as Binomial and Poisson distributions.|
+||Continuous Distributions: Such as Normal (Gaussian) and Exponential distributions.|
+|Bayes' Theorem|Describes the probability of an event based on prior knowledge of conditions related to the event.|
+|Markov Chains|Models where the next state depends only on the current state (memoryless property).|
+
+|Statistics||
+|-|-|
+|Descriptive Statistics|Mean, Median, Mode: Measures of central tendency.|
+||Standard Deviation, Variance: Measures of spread.|
+|Inferential Statistics|Hypothesis Testing: Methods to test assumptions about a population.|
+||Confidence Intervals: Range of values likely to contain the population parameter.|
+|Regression Analysis|Linear Regression: Modeling the relationship between a dependent variable and one or more independent variables.|
+||Logistic Regression: Modeling the probability of a binary outcome.|
+|Clustering|K-Means: Partitioning data into K clusters.|
+||Hierarchical Clustering: Building a hierarchy of clusters.|
+
+### Python for Machine Learning
+
+* [Real Python Tutorials](https://realpython.com/)
+* [Python Data Science Handbook](https://jakevdp.github.io/PythonDataScienceHandbook/)
+
+### Machine Learning
+
+#### [Supervised Learning, Unsupervised Learning](https://github.com/AlleninTaipei/Artificial-Intelligence-Introduction-for-Beginners/blob/main/AI%20Introduction.md#machine-learning)
+
+#### Model Evaluation
+
+|Model evaluation|It is crucial to assess the performance of a machine learning model. Proper evaluation ensures that the model generalizes well to unseen data and meets the desired criteria.|
+|-|-|
+|Metrics|Various metrics are used depending on the type of task.|
+||Classification: Accuracy, precision, recall, F1 score, ROC-AUC.|
+||Regression: Mean absolute error (MAE), mean squared error (MSE), R-squared.|
+|Validation Techniques|Train-Test Split: Dividing the dataset into training and testing sets.|
+||Cross-Validation: Dividing the data into k subsets (folds) and training/testing the model k times with a different fold as the test set each time. Common techniques include k-fold cross-validation and stratified k-fold cross-validation.|
+|Overfitting|When the model performs well on training data but poorly on unseen data due to learning noise and details of the training data.|
+|Underfitting|When the model is too simple to capture the underlying pattern of the data, resulting in poor performance on both training and test data.|
+
+### Neural Networks
+
+Fundamentals, Training and Optimization, Overfitting, Implement an MLP
+
+### Natural Language Processing
+
+Text Preprocessing, Feature Extraction Techniques, Word Embeddings, Recurrent Neural Networks
