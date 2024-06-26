@@ -12,8 +12,8 @@
 |LLM Scientist Roadmap|[The LLM Architecture](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#the-llm-architecture)|Transformer, Tokenization, Attention mechanisms, Text generation|
 ||[Instruction Dataset](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#instruction-dataset)|Alpaca-like dataset, Advanced techniques, Filtering data, Prompt templates|
 ||[Pre-training Models](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#pre-traning-models)|Data pipeline, Causal language modeling, Scaling laws, High-Performance Computing|
-||[Supervised Fine-Tuning](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#supervised-fine-tuning)|Full fine-tuning, LoRA, QLoRA, DeepSpeed|
-||[Preference Alignment](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#prereference-alignment)|Preference datasets, Proximal Policy Optimization, Direct Preference Optimization|
+||[Supervised Fine-Tuning](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#supervised-fine-tuning)|Full fine-tuning, LoRA, QLoRA|
+||[Preference Alignment](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#preference-alignment)|Preference datasets, Proximal Policy Optimization, Direct Preference Optimization|
 ||[Evaluation](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#evaluation)|Traditional metrics, General benchmarks, Task-specific benchmarks, Human evaluation|
 ||[Quantization](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#quantization)|Base techniques, GGUF and llama.cpp, GPTQ and EXL2, AWQ|
 ||[New Trends](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#new-trends)|Positional embeddings, Model merging, Mixture of Experts, Multimodal models|
@@ -324,6 +324,24 @@ Selecting the right technique depends on the specific constraints and requiremen
 |High-Performance Computing (HPC)|This refers to the use of powerful computer systems and parallel processing techniques to solve complex computational problems. In the context of large language models, HPC is crucial for training and running these models efficiently, as they require enormous amounts of computational power.|
 
 ### Supervised Fine-Tuning
+
+* **Full fine-tuning** involves retraining an entire pre-trained model on a new dataset to adapt it to a specific task or domain. All model parameters are updated during this process.
+* SFT is a particular way of fine-tuning. It's a subset or specific application of the broader concept of fine-tuning, with an emphasis on supervised learning using task-specific data.
+  **Uses labeled data to guide the model's learning**
+  **Often involves instruction-following or task-specific training**
+
+|Fine-Tuning||
+|-|-|
+|[LoRA](https://arxiv.org/abs/2106.09685)|A parameter-efficient fine-tuning method that adds trainable rank decomposition matrices to existing weights. This reduces memory usage and training time compared to full fine-tuning.|
+|[QLoRA](https://arxiv.org/abs/2305.14314)|An extension of LoRA that uses quantization techniques to further reduce memory requirements, allowing fine-tuning of large models on consumer-grade hardware.|
+
+* [DeepSpeed](https://www.deepspeed.ai/) is a deep learning optimization library developed by Microsoft. It provides various features to improve training efficiency, including model parallelism, optimizer state partitioning, and gradient accumulation.|
+* [Axolotl](https://github.com/OpenAccess-AI-Collective/axolotl)  is a tool designed to streamline the fine-tuning of various AI models, offering support for multiple configurations and architectures.
+* [Finetuning LLMs with LoRA and QLoRA: Insights from Hundreds of Experiments](https://lightning.ai/pages/community/lora-insights/)
+* [The Novice's LLM Training Guide](https://rentry.org/llm-training)
+* [Fine-Tune Your Own Llama 2 Model in a Colab Notebook](https://mlabonne.github.io/blog/posts/Fine_Tune_Your_Own_Llama_2_Model_in_a_Colab_Notebook.html)
+* [A Beginner’s Guide to LLM Fine-Tuning](https://mlabonne.github.io/blog/posts/A_Beginners_Guide_to_LLM_Finetuning.html)
+
 ### Preference Alignment
 ### Evaluation
 ### Quantization
