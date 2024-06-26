@@ -335,7 +335,7 @@ Selecting the right technique depends on the specific constraints and requiremen
 |[LoRA](https://arxiv.org/abs/2106.09685)|A parameter-efficient fine-tuning method that adds trainable rank decomposition matrices to existing weights. This reduces memory usage and training time compared to full fine-tuning.|
 |[QLoRA](https://arxiv.org/abs/2305.14314)|An extension of LoRA that uses quantization techniques to further reduce memory requirements, allowing fine-tuning of large models on consumer-grade hardware.|
 
-* [DeepSpeed](https://www.deepspeed.ai/) is a deep learning optimization library developed by Microsoft. It provides various features to improve training efficiency, including model parallelism, optimizer state partitioning, and gradient accumulation.|
+* [DeepSpeed](https://www.deepspeed.ai/) is a deep learning optimization library developed by Microsoft. It provides various features to improve training efficiency, including model parallelism, optimizer state partitioning, and gradient accumulation **for multi-GPU and multi-node settings.**|
 * [Axolotl](https://github.com/OpenAccess-AI-Collective/axolotl)  is a tool designed to streamline the fine-tuning of various AI models, offering support for multiple configurations and architectures.
 * [Finetuning LLMs with LoRA and QLoRA: Insights from Hundreds of Experiments](https://lightning.ai/pages/community/lora-insights/)
 * [The Novice's LLM Training Guide](https://rentry.org/llm-training)
@@ -395,10 +395,13 @@ Selecting the right technique depends on the specific constraints and requiremen
 
 |New Trends||
 |-|-|
-|**Positional embeddings**|These are used in transformer models to provide information about the relative or absolute position of tokens in a sequence. They're crucial for models to understand the order and structure of input data.|
-|**Model merging**|This technique involves combining multiple trained models to create a new model that potentially inherits the strengths of its "parent" models. It's an active area of research for improving model performance and capabilities.|
-|**Mixture of Experts (MoE)**|This approach uses multiple "expert" neural networks, each specialized for different tasks or data types, with a gating mechanism to route inputs to the most appropriate expert. MoE can improve efficiency and performance, especially for large-scale models.|
-|**Multimodal models**|These models can process and understand multiple types of data (e.g., text, images, audio) simultaneously. They're becoming increasingly important for tasks that require integrating information from diverse sources.|
+|**Positional embeddings**|These are used in transformer models to provide information about the relative or absolute position of tokens in a sequence. They're crucial for models to understand the order and structure of input data.<br>[RoFormer: Enhanced Transformer with Rotary Position Embedding](https://arxiv.org/abs/2104.09864)<br>[YaRN: Efficient Context Window Extension of Large Language Models](https://arxiv.org/abs/2309.00071)<br>[Train Short, Test Long: Attention with Linear Biases Enables Input Length Extrapolation](https://arxiv.org/abs/2108.12409)|
+|**Model merging**|This technique involves combining multiple trained models to create a new model that potentially inherits the strengths of its "parent" models. It's an active area of research for improving model performance and capabilities.<br>[Language Models are Super Mario: Absorbing Abilities from Homologous Models as a Free Lunch](https://arxiv.org/abs/2311.03099)<br>[Merge Large Language Models](https://mlabonne.github.io/blog/posts/2024-01-08_Merge_LLMs_with_mergekit.html) with [mergekit](https://github.com/arcee-ai/mergekit)|
+|[Mixture of Experts (MoE)](https://arxiv.org/abs/2401.04088)|This approach uses multiple "expert" neural networks, each specialized for different tasks or data types, with a gating mechanism to route inputs to the most appropriate expert. MoE can improve efficiency and performance, especially for large-scale models.<br>[phixtral-2x2_8](https://huggingface.co/mlabonne/phixtral-2x2_8)|
+|**Multimodal models**|[CLIP: Connecting text and images](https://openai.com/index/clip/)<br>[Stable Diffusion 3 Medium](https://stability.ai/stable-image)<br>[LLaVA: Large Language and Vision Assistant](https://llava-vl.github.io/)|
+
+* [Mixture of Experts Explained](https://huggingface.co/blog/moe)
+* [Multimodality and Large Multimodal Models (LMMs)](https://huyenchip.com/2023/10/10/multimodal.html)
 
 ---
 
