@@ -249,7 +249,7 @@ Selecting the right technique depends on the specific constraints and requiremen
 * Designed for fine-tuning large language models
 * Often created through self-instruct methods or human curation
 
-|Dataset|Advanced techniques||
+|Dataset|Advanced techniques|
 |-|-|
 |Self-instruct method|Using a large language model to generate its own training data
 ||Iterative process of generating instructions, responses, and refining them|
@@ -325,7 +325,7 @@ Selecting the right technique depends on the specific constraints and requiremen
 
 ### Supervised Fine-Tuning
 
-* **Full fine-tuning** involves retraining an entire pre-trained model on a new dataset to adapt it to a specific task or domain. All model parameters are updated during this process.
+* **Full fine-tuning** involves retraining an entire pre-trained model on a new dataset to adapt it to a specific task or domain. **All model parameters are updated during this process**.
 * SFT is a particular way of fine-tuning. It's a subset or specific application of the broader concept of fine-tuning, with an emphasis on supervised learning using task-specific data.
   **Uses labeled data to guide the model's learning**
   **Often involves instruction-following or task-specific training**
@@ -343,10 +343,62 @@ Selecting the right technique depends on the specific constraints and requiremen
 * [A Beginner’s Guide to LLM Fine-Tuning](https://mlabonne.github.io/blog/posts/A_Beginners_Guide_to_LLM_Finetuning.html)
 
 ### Preference Alignment
+
+|Peference Alignment||
+|-|-|
+|Preference datasets|These are collections of data representing human preferences, often used in machine learning to train models to align with human values or choices. They typically consist of paired comparisons where humans indicate their preference between two options.|
+|[Proximal Policy Optimization](https://arxiv.org/abs/1707.06347)|PPO is a popular reinforcement learning algorithm developed by OpenAI. It's used to train agents to make decisions in complex environments. PPO aims to improve the stability and efficiency of policy gradient methods by limiting the size of policy updates.|
+|[Direct Preference Optimization](https://arxiv.org/abs/2305.18290)|DPO is a more recent approach to training language models using human preference data. It directly optimizes a model to match the preference distribution implied by a dataset of human preferences, without using reinforcement learning techniques.|
+
+* [Synthesize data for AI and add feedback on the fly!](https://github.com/argilla-io/distilabel)
+* [Illustrating Reinforcement Learning from Human Feedback (RLHF)](https://huggingface.co/blog/rlhf)
+* [Preference Tuning LLMs with Direct Preference Optimization Methods](https://huggingface.co/blog/pref-tuning)
+
 ### Evaluation
+
+|Evaluation||
+|-|-|
+|Traditional metrics|These typically include quantitative measures like accuracy, precision, recall, F1 score, perplexity, and others depending on the specific task.|
+|General benchmarks|These are standardized tests designed to assess AI capabilities across a range of tasks. Examples include GLUE, SuperGLUE, and MMLU.|
+|Task-specific benchmarks|These focus on evaluating performance on particular applications or domains, such as machine translation, text summarization, or question answering.|
+|Human evaluation|This involves having human raters assess model outputs on criteria like relevance, coherence, and overall quality. It's particularly important for open-ended tasks.|
+
+* [A Survey on Evaluation of Large Language Models](https://arxiv.org/abs/2307.03109)
+* [LMSYS Chatbot Arena Leaderboard](https://huggingface.co/spaces/lmsys/chatbot-arena-leaderboard)
+
 ### Quantization
+
+|Base techniques|[Quantization](https://github.com/AlleninTaipei/Artificial-Intelligence-Introduction-for-Beginners/blob/main/AI%20Introduction.md#quantization) reduces model size and inference speed by converting high-precision floating-point weights to lower-precision formats.|
+|-|-|
+|Int8 quantization|Converts 32-bit floats to 8-bit integers|
+|Int4 quantization|Uses 4-bit integers for further compression|
+|Mixed-precision|Combines different precisions for different layers|
+|GGUF and [llama.cpp](https://github.com/ggerganov/llama.cpp)|GGUF (GPT-Generated Unified Format) is a file format for quantized models|
+||llama.cpp is an efficient C++ implementation for running LLMs on CPUs|
+||Supports various quantization levels (4-bit, 5-bit, 8-bit)|
+||Optimized for inference on consumer hardware|
+|[GPTQ](https://arxiv.org/abs/2210.17323) and [EXL2](https://github.com/turboderp/exllamav2)|GPTQ (GPT Quantization) is a quantization method for LLMs|
+||Uses vector-wise quantization and second-order information|
+||EXL2 is an optimized CUDA implementation of GPTQ|
+||Allows for 3-bit and 4-bit quantization with minimal accuracy loss|
+|[AWQ (Activation-aware Weight Quantization)](https://arxiv.org/abs/2306.00978)|Considers activation distributions during quantization|
+||Adaptively chooses quantization parameters for each layer|
+||Can achieve high compression rates (2-4 bit) with less accuracy loss|
+||Often used in conjunction with other techniques|
+
+* [Introduction to Weight Quantization](https://mlabonne.github.io/blog/posts/Introduction_to_Weight_Quantization.html)
+* [Quantize Llama models with GGUF and llama.cpp](https://mlabonne.github.io/blog/posts/Quantize_Llama_2_models_using_ggml.html)
+* [4-bit LLM Quantization with GPTQ](https://mlabonne.github.io/blog/posts/4_bit_Quantization_with_GPTQ.html)
+* [ExLlamaV2: The Fastest Library to Run LLMs](https://mlabonne.github.io/blog/posts/ExLlamaV2_The_Fastest_Library_to_Run%C2%A0LLMs.html)
+
 ### New Trends
 
+|New Trends||
+|-|-|
+|**Positional embeddings**|These are used in transformer models to provide information about the relative or absolute position of tokens in a sequence. They're crucial for models to understand the order and structure of input data.|
+|**Model merging**|This technique involves combining multiple trained models to create a new model that potentially inherits the strengths of its "parent" models. It's an active area of research for improving model performance and capabilities.|
+|**Mixture of Experts (MoE)**|This approach uses multiple "expert" neural networks, each specialized for different tasks or data types, with a gating mechanism to route inputs to the most appropriate expert. MoE can improve efficiency and performance, especially for large-scale models.|
+|**Multimodal models**|These models can process and understand multiple types of data (e.g., text, images, audio) simultaneously. They're becoming increasingly important for tasks that require integrating information from diverse sources.|
 
 ---
 
