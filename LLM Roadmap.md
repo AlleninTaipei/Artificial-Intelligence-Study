@@ -466,9 +466,7 @@ Selecting the right technique depends on the specific constraints and requiremen
 
 ### Machine Learning
 
-#### [Supervised Learning, Unsupervised Learning](https://github.com/AlleninTaipei/Artificial-Intelligence-Introduction-for-Beginners/blob/main/AI%20Introduction.md#machine-learning)
-
-#### Model Evaluation
+* [Supervised Learning, Unsupervised Learning](https://github.com/AlleninTaipei/Artificial-Intelligence-Introduction-for-Beginners/blob/main/AI%20Introduction.md#machine-learning)
 
 |Model evaluation|It is crucial to assess the performance of a machine learning model. Proper evaluation ensures that the model generalizes well to unseen data and meets the desired criteria.|
 |-|-|
