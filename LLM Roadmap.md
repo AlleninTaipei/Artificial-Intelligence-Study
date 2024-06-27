@@ -251,14 +251,14 @@ Selecting the right technique depends on the specific constraints and requiremen
 
 |Dataset|Advanced techniques|
 |-|-|
-|Self-instruct method|Using a large language model to generate its own training data
+|Self-instruct method|Using a large language model to generate training data for itself.|
 ||Iterative process of generating instructions, responses, and refining them|
 |Data filtering and cleaning|Removing low-quality or inappropriate content|
 ||Ensuring diversity in tasks and domains|
 ||Balancing different types of instructions|
 |Prompt engineering|Crafting effective instructions and prompts|
 ||Ensuring clarity and specificity in the tasks|
-||Fine-tuning|Adapting pre-trained models on the Alpaca-like dataset|
+|Fine-tuning|Adapting pre-trained models on the Alpaca-like dataset|
 ||Often using techniques like LoRA (Low-Rank Adaptation) for efficiency|
 |Evaluation|Using benchmarks to assess the model's instruction-following abilities|
 ||Human evaluation of generated responses|
@@ -274,7 +274,7 @@ Selecting the right technique depends on the specific constraints and requiremen
 |Filtering data||
 |-|-|
 |Definition|Data filtering is the process of selecting a subset of data from a larger dataset based on specific criteria or conditions.|
-|Common techniques|Boolean filtering: Using logical operators (AND, OR, NOT) to combine conditions|
+|Techniques|Boolean filtering: Using logical operators (AND, OR, NOT) to combine conditions|
 ||Numeric filtering: Selecting data based on numerical thresholds or ranges|
 ||Text-based filtering: Using string matching or regular expressions|
 ||Date/time filtering: Selecting data within specific time periods|
@@ -283,7 +283,7 @@ Selecting the right technique depends on the specific constraints and requiremen
 ||Data cleaning and preprocessing|
 ||Business intelligence and reporting|
 |Tools|SQL for relational databases|
-||Pandas library in Python|
+||Pandas library in Python(e.g.,`pandas.DataFrame.query`, `pandas.DataFrame.loc`)|
 ||Excel filters and formulas|
 ||Various data analysis and visualization tools (e.g., Tableau, Power BI)|
 
