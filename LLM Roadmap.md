@@ -81,7 +81,7 @@
 
 |Inference Optimization||
 |-|-|
-|Flash Attention|A known issue with transformer models is that the self-attention mechanism grows quadratically in compute and memory with the number of input tokens. This limitation is only magnified in LLMs which handles much longer sequences. To address this FlashAttention and FlashAttention-2 break up the attention computation into smaller chunks and reduces the number of intermediate read/write operations to GPU memory to speed up inference.<br>[Optimizing LLMs for Speed and Memory](https://huggingface.co/docs/transformers/main/en/llm_tutorial_optimization)|
+|[FlashAttention](https://arxiv.org/abs/2205.14135)|A known issue with transformer models is that the self-attention mechanism grows quadratically in compute and memory with the number of input tokens. This limitation is only magnified in LLMs which handles much longer sequences. To address this FlashAttention and [FlashAttention-2](https://arxiv.org/abs/2307.08691) break up the attention computation into smaller chunks and reduces the number of intermediate read/write operations to GPU memory to speed up inference.<br>[Optimizing LLMs for Speed and Memory](https://huggingface.co/docs/transformers/main/en/llm_tutorial_optimization)|
 |Key-value cache|KV caching, the decode phase generates a single token at each time step, but each token depends on the key and value tensors of all previous tokens.<br>[Multi-Query Attention](https://arxiv.org/abs/1911.02150) (MQA) and [Grouped-Query Attention](https://arxiv.org/abs/2305.13245) (GQA)|
 |Speculative decoding|Each input token you need to load the model weights each time during the forward pass. Speculative decoding alleviates this slowdown by using a second smaller and faster assistant model to generate candidate tokens that are verified by the larger LLM in a single forward pass.|
 
@@ -141,31 +141,33 @@
 |Hugging Face Transformers|When fine-tuning or deploying transformers from the Hugging Face library, models and datasets can be stored on NVMe SSDs to accelerate loading times and reduce latency during inference.|
 |Conclusion|While FlashAttention and FlashAttention-2 optimize GPU memory and computation, NVMe SSDs provide significant benefits for LLM tasks related to data loading, preprocessing, and checkpointing. Leveraging NVMe SSDs can lead to faster initialization, reduced latency, and more efficient data handling, making them a valuable component in the overall infrastructure for training and deploying large language models.|
 
-|Flash Decoding|A technique designed to accelerate the decoding process in transformer-based language models, particularly during inference. This method focuses on optimizing memory access and computational efficiency to reduce the latency and computational overhead of generating text.|
+|Flash-Decoding|A technique designed to accelerate the decoding process in transformer-based language models, particularly during inference. This method focuses on optimizing memory access and computational efficiency to reduce the latency and computational overhead of generating text.|
 |-|-|
-|Chunked Decoding|Similar to FlashAttention, Flash Decoding breaks the decoding process into smaller chunks. This helps in managing memory more efficiently by processing smaller pieces of data at a time, reducing the overall memory footprint.|
-|Efficient Memory Utilization|By keeping intermediate computations within the GPU's fast on-chip memory (such as registers and shared memory), Flash Decoding minimizes the need for slow memory transfers between the GPU and global memory.|
-|Parallel Processing|Flash Decoding leverages the parallel processing capabilities of modern GPUs. By organizing computations in a way that maximizes parallelism, it ensures that all available GPU cores are utilized effectively, speeding up the decoding process.|
+|Chunked Decoding|Similar to FlashAttention, Flash-Decoding breaks the decoding process into smaller chunks. This helps in managing memory more efficiently by processing smaller pieces of data at a time, reducing the overall memory footprint.|
+|Efficient Memory Utilization|By keeping intermediate computations within the GPU's fast on-chip memory (such as registers and shared memory), Flash-Decoding minimizes the need for slow memory transfers between the GPU and global memory.|
+|Parallel Processing|Flash-Decoding leverages the parallel processing capabilities of modern GPUs. By organizing computations in a way that maximizes parallelism, it ensures that all available GPU cores are utilized effectively, speeding up the decoding process.|
 |Reduced Latency|The technique is specifically designed to lower the latency of generating each token during inference. This is crucial for real-time applications where quick response times are essential, such as conversational AI and real-time translation systems.|
-|**How Flash Decoding Works**||
-|Input Token Processing|During the decoding phase, the model processes input tokens to generate the next token in the sequence. Flash Decoding optimizes this step by using chunking and parallel processing to handle multiple tokens simultaneously.|
+
+|How Flash-Decoding Works|[Flash-Decoding for long-context inference](https://crfm.stanford.edu/2023/10/12/flashdecoding.html)|
+|-|-|
+|Input Token Processing|During the decoding phase, the model processes input tokens to generate the next token in the sequence. Flash-Decoding optimizes this step by using chunking and parallel processing to handle multiple tokens simultaneously.|
 |Intermediate Computations|Intermediate results, such as the logits for each token, are computed and stored in fast on-chip memory. This reduces the number of read/write operations to slower global memory, which can be a significant bottleneck.|
 |Output Token Generation|The next token is generated based on the processed input tokens and intermediate computations. This process is repeated iteratively to generate the entire sequence, with each step being optimized for speed and memory efficiency.|
 |**Practical Implications**||
-|Faster Inference|By reducing the computational overhead and latency associated with the decoding process, Flash Decoding enables faster inference times. This is particularly beneficial for applications that require rapid generation of text, such as chatbots, virtual assistants, and interactive storytelling.|
+|Faster Inference|By reducing the computational overhead and latency associated with the decoding process, Flash-Decoding enables faster inference times. This is particularly beneficial for applications that require rapid generation of text, such as chatbots, virtual assistants, and interactive storytelling.|
 |Resource Efficiency|Optimizing memory usage and computational efficiency means that the same hardware can handle larger models or more concurrent requests, improving the overall throughput of the system.|
-|Scalability|Flash Decoding can be scaled to work with larger models and datasets, making it suitable for state-of-the-art language models that require significant computational resources.|
-|**Comparison with FlashAttention**|While FlashAttention focuses on optimizing the attention mechanism within transformers, Flash Decoding targets the decoding phase. Both techniques share similar principles, such as chunking and efficient memory utilization, but they are applied to different parts of the model's operation:|
+|Scalability|Flash-Decoding can be scaled to work with larger models and datasets, making it suitable for state-of-the-art language models that require significant computational resources.|
+|**Comparison with FlashAttention**|While FlashAttention focuses on optimizing the attention mechanism within transformers, Flash-Decoding targets the decoding phase. Both techniques share similar principles, such as chunking and efficient memory utilization, but they are applied to different parts of the model's operation:|
 |FlashAttention|Optimizes the computation of attention weights and the resulting attention output.|
-|Flash Decoding|Optimizes the generation of tokens during the decoding phase, reducing latency and improving throughput.|
-|Conclusion|Flash Decoding is a powerful technique for accelerating the inference phase of transformer-based language models. By optimizing memory access patterns and leveraging the parallel processing capabilities of GPUs, it reduces latency and improves computational efficiency, making it an essential tool for real-time applications and large-scale deployments of language models.|
+|Flash-Decoding|Optimizes the generation of tokens during the decoding phase, reducing latency and improving throughput.|
+|Conclusion|Flash-Decoding is a powerful technique for accelerating the inference phase of transformer-based language models. By optimizing memory access patterns and leveraging the parallel processing capabilities of GPUs, it reduces latency and improves computational efficiency, making it an essential tool for real-time applications and large-scale deployments of language models.|
 
 * When comparing different techniques used in Large Language Models (LLMs) for their VRAM size efficiency and training time performance, it's important to consider a variety of methods and optimizations.
 
 |VRAM Size Efficiency|Efficiency Ranking|Reason|
 |-|-|-|
 |FlashAttention/FlashAttention-2|High|By breaking the attention computation into smaller chunks and reducing intermediate read/write operations, FlashAttention optimizes memory usage, significantly lowering the VRAM requirements.|
-|Mixed Precision Training (FP16/BFloat16)|High|Mixed precision training uses 16-bit floats instead of 32-bit floats, effectively halving the memory requirements for storing weights and activations, thus reducing VRAM usage.|
+|[Mixed Precision Training](https://arxiv.org/abs/1710.03740) (FP16/BFloat16)|High|Mixed precision training uses 16-bit floats instead of 32-bit floats, effectively halving the memory requirements for storing weights and activations, thus reducing VRAM usage.|
 |Gradient Checkpointing|High|This technique saves memory by recomputing intermediate activations during the backward pass instead of storing them, reducing VRAM consumption at the cost of additional computation.|
 |Memory Mapping and Swapping (Offloading)|Moderate|Techniques like ZeRO-Offload (used in DeepSpeed) offload certain parts of the model to CPU memory, reducing VRAM usage but potentially increasing data transfer overhead.|
 |Model Parallelism (Tensor and Pipeline Parallelism)|Variable|Distributes the model across multiple GPUs to fit larger models into memory. The efficiency depends on the inter-GPU communication overhead and the model architecture.|
@@ -241,13 +243,14 @@ Selecting the right technique depends on the specific constraints and requiremen
 #### Alpaca-like dataset
 
 * [Alpaca 7B](https://crfm.stanford.edu/2023/03/13/alpaca.html)
-* An instruction dataset is a list of pairs: instruction and answer.
-* An instruction dataset could be created in one of the following ways:
-  **Use an existing dataset and convert it into an instruction dataset.**
-  **Use existing LLMs to create an instruction dataset.**
-  **Manually create an instruction dataset.**
-* Designed for fine-tuning large language models
-* Often created through self-instruct methods or human curation
+
+|Instruction dataset|A list of pairs: instruction and answer|
+|-|-|
+|Usage|**Designed for fine-tuning LLMS**|
+|Create|Often created through self-instruct methods or human curation|
+||**Use an existing dataset and convert it into an instruction dataset.**|
+||**Use existing LLMs to create an instruction dataset.**|
+||**Manually create an instruction dataset.**|
 
 |Dataset|Advanced techniques|
 |-|-|
