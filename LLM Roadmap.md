@@ -480,8 +480,283 @@ Selecting the right technique depends on the specific constraints and requiremen
 
 ### Neural Networks
 
-Fundamentals, Training and Optimization, Overfitting, Implement an MLP
+|Neural Networks|Neural networks are a set of algorithms, modeled loosely after the human brain, designed to recognize patterns. They interpret sensory data through a kind of machine perception, labeling, or clustering of raw input. The basic building block of a neural network is the neuron, often referred to as a node or unit.|
+|-|-|
+|Neuron|A single computational unit in a neural network. It takes input, processes it, and generates an output.|
+|Layer|A collection of neurons. The three primary types of layers are input, hidden, and output layers.|
+|Activation Function|Determines the output of a neuron given a set of inputs. Common activation functions include sigmoid, tanh, and ReLU.|
+|Weight|Parameters within the neural network that transform input data within the network's layers.|
+|Bias|A parameter that allows you to shift the activation function.|
+
+|Steps in Training|Training a neural network involves adjusting the weights and biases to minimize the error in the output. This is typically done using a process called backpropagation in conjunction with an optimization algorithm.|
+|-|-|
+|Forward Propagation|Input data is passed through the network, layer by layer, until it reaches the output layer.|
+|Loss Function|Measures the difference between the network's output and the true value. Common loss functions include Mean Squared Error (MSE) for regression tasks and Cross-Entropy Loss for classification tasks.|
+|Backpropagation|The process of calculating the gradient of the loss function with respect to each weight by the chain rule, starting from the output layer and moving backward through the network.|
+|Optimization Algorithm|Updates the weights and biases to minimize the loss function. Common optimization algorithms include Gradient Descent, Adam, and RMSprop.
+
+|Techniques to Prevent Overfitting|Overfitting occurs when a model learns the training data too well, including its noise and outliers, leading to poor performance on unseen data.|
+|-|-|
+|Regularization|Techniques like L1 and L2 regularization add a penalty for large weights to the loss function.|
+|Dropout|Randomly sets a fraction of input units to zero at each update during training time, which helps prevent neurons from co-adapting too much.|
+|Early Stopping|Stops training when the performance on a validation set starts to degrade, indicating that the model is beginning to overfit.|
+|Cross-Validation|Splitting the data into multiple training and validation sets to ensure the model generalizes well.|
+
+#### Implementing a Multilayer Perceptron (MLP)
+
+* A Multilayer Perceptron is a class of feedforward artificial neural network (ANN) that consists of at least three layers of nodes: an input layer, a hidden layer, and an output layer.
+
+* Here’s how you can implement a simple Multi-Layer Perceptron (MLP) using PyTorch
+
+        import torch
+        import torch.nn as nn
+        import torch.optim as optim
+        from torch.utils.data import DataLoader, TensorDataset
+        from sklearn.model_selection import train_test_split
+        import numpy as np
+
+        # Assuming you have your data loaded in variables `X` and `y`
+        # For demonstration, let's create dummy data
+        X = np.random.rand(1000, 784).astype(np.float32)
+        y = np.random.randint(0, 10, 1000).astype(np.int64)
+
+        # Split the data into training and test sets
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+        # Convert data to PyTorch tensors
+        X_train = torch.tensor(X_train)
+        y_train = torch.tensor(y_train)
+        X_test = torch.tensor(X_test)
+        y_test = torch.tensor(y_test)
+
+        # Create DataLoader for training and test sets
+        train_dataset = TensorDataset(X_train, y_train)
+        train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
+
+        test_dataset = TensorDataset(X_test, y_test)
+        test_loader = DataLoader(test_dataset, batch_size=32, shuffle=False)
+
+        # Define the neural network architecture
+        class MLP(nn.Module):
+            def __init__(self):
+                super(MLP, self).__init__()
+                self.fc1 = nn.Linear(784, 64)
+                self.fc2 = nn.Linear(64, 10)
+                self.relu = nn.ReLU()
+                self.softmax = nn.Softmax(dim=1)
+
+            def forward(self, x):
+                x = self.relu(self.fc1(x))
+                x = self.softmax(self.fc2(x))
+                return x
+
+        # Instantiate the model, define the loss function and the optimizer
+        model = MLP()
+        criterion = nn.CrossEntropyLoss()
+        optimizer = optim.Adam(model.parameters(), lr=0.001)
+
+        # Training the model
+        num_epochs = 10
+        for epoch in range(num_epochs):
+            model.train()
+            running_loss = 0.0
+            for inputs, labels in train_loader:
+                optimizer.zero_grad()
+                outputs = model(inputs)
+                loss = criterion(outputs, labels)
+                loss.backward()
+                optimizer.step()
+                running_loss += loss.item()
+
+            print(f'Epoch [{epoch+1}/{num_epochs}], Loss: {running_loss/len(train_loader):.4f}')
+
+        # Evaluating the model
+        model.eval()
+        correct = 0
+        total = 0
+        with torch.no_grad():
+            for inputs, labels in test_loader:
+                outputs = model(inputs)
+                _, predicted = torch.max(outputs.data, 1)
+                total += labels.size(0)
+                correct += (predicted == labels).sum().item()
+
+        print(f'Test Accuracy: {correct / total:.4f}')
+
 
 ### Natural Language Processing
 
-Text Preprocessing, Feature Extraction Techniques, Word Embeddings, Recurrent Neural Networks
+* Natural Language Processing (NLP) is a field of artificial intelligence that focuses on the interaction between computers and humans through natural language. The ultimate goal of NLP is to enable computers to understand, interpret, and generate human language in a way that is both meaningful and useful.
+
+|Text Preprocessing|Text preprocessing involves transforming raw text into a format that can be effectively used by machine learning models.|
+|-|-|
+|Tokenization|Splitting text into smaller units like words or sentences.|
+|Lowercasing|Converting all characters in the text to lowercase to maintain uniformity.|
+|Removing Punctuation|Stripping punctuation marks to avoid treating punctuations as separate words.|
+|Stop Words Removal|Removing common words (like 'and', 'the', etc.) that do not contribute much to the meaning.|
+|Stemming|Reducing words to their base or root form (e.g., 'running' to 'run').|
+|Lemmatization|Reducing words to their base or dictionary form (e.g., 'better' to 'good').|
+
+    import nltk
+    from nltk.tokenize import word_tokenize
+    from nltk.corpus import stopwords
+    from nltk.stem import PorterStemmer, WordNetLemmatizer
+
+    nltk.download('punkt')
+    nltk.download('stopwords')
+    nltk.download('wordnet')
+
+    # Example text
+    text = "Natural Language Processing is fascinating. It's exciting to learn NLP!"
+
+    # Tokenization
+    tokens = word_tokenize(text.lower())
+
+    # Removing punctuation
+    tokens = [word for word in tokens if word.isalnum()]
+
+    # Removing stop words
+    stop_words = set(stopwords.words('english'))
+    tokens = [word for word in tokens if word not in stop_words]
+
+    # Stemming
+    stemmer = PorterStemmer()
+    stemmed_tokens = [stemmer.stem(word) for word in tokens]
+
+    # Lemmatization
+    lemmatizer = WordNetLemmatizer()
+    lemmatized_tokens = [lemmatizer.lemmatize(word) for word in tokens]
+
+    print("Original Tokens:", tokens)
+    print("Stemmed Tokens:", stemmed_tokens)
+    print("Lemmatized Tokens:", lemmatized_tokens)
+
+|Feature Extraction Techniques|Feature extraction involves transforming text data into numerical vectors that can be fed into machine learning models.|
+|-|-|
+|Bag of Words (BoW)|Represents text as a set of word frequencies.|
+|TF-IDF (Term Frequency-Inverse Document Frequency)|Adjusts the word frequencies by how commonly the words appear across multiple documents.|
+|Word Embeddings|Maps words to vectors of real numbers in a high-dimensional space.<br>Word embeddings are dense vector representations of words that capture their meanings, semantic relationships, and syntactic roles. Popular word embedding techniques include Word2Vec, GloVe, and FastText.|
+
+    # Using Scikit-learn to extract features:
+    from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
+
+    # Example text data
+    documents = [
+        "Natural Language Processing is fascinating.",
+        "It's exciting to learn NLP!",
+        "Language processing includes many tasks."
+    ]
+
+    # Bag of Words
+    vectorizer = CountVectorizer()
+    X_bow = vectorizer.fit_transform(documents)
+    print("Bag of Words:\n", X_bow.toarray())
+
+    # TF-IDF
+    tfidf_vectorizer = TfidfVectorizer()
+    X_tfidf = tfidf_vectorizer.fit_transform(documents)
+    print("TF-IDF:\n", X_tfidf.toarray())
+
+####
+
+    #Using Gensim to load pre-trained word embeddings:
+    import gensim.downloader as api
+
+    # Load pre-trained GloVe embeddings
+    word2vec_model = api.load("glove-wiki-gigaword-100")
+
+    # Get the vector for a word
+    vector = word2vec_model['language']
+
+    # Find most similar words
+    similar_words = word2vec_model.most_similar('language', topn=5)
+    print("Most similar words to 'language':", similar_words)
+
+|Recurrent Neural Networks (RNNs)|RNNs are a class of neural networks that are particularly good at modeling sequence data, such as time series or natural language, by maintaining a memory of previous inputs through their recurrent connections.|
+|-|-|
+|Standard RNNs|Have issues with long-term dependencies due to vanishing and exploding gradients.|
+|Long Short-Term Memory (LSTM)|Designed to handle long-term dependencies by introducing a cell state and gates to control information flow.|
+|Gated Recurrent Unit (GRU)|A simplified version of LSTM with fewer gates, offering similar performance.|
+
+    import torch
+    import torch.nn as nn
+    import torch.optim as optim
+    from torch.utils.data import DataLoader, Dataset
+    from sklearn.preprocessing import LabelEncoder
+    from sklearn.model_selection import train_test_split
+    from keras.preprocessing.text import Tokenizer
+    from keras.preprocessing.sequence import pad_sequences
+
+    # Example text data
+    texts = [
+        "I love machine learning!",
+        "Natural language processing is a fascinating field.",
+        "Deep learning models are very powerful."
+    ]
+    labels = [1, 1, 0]  # Example labels
+
+    # Tokenize and pad sequences
+    tokenizer = Tokenizer(num_words=10000)
+    tokenizer.fit_on_texts(texts)
+    sequences = tokenizer.texts_to_sequences(texts)
+    padded_sequences = pad_sequences(sequences, maxlen=10)
+
+    # Convert to PyTorch tensors
+    X = torch.tensor(padded_sequences, dtype=torch.long)
+    y = torch.tensor(labels, dtype=torch.float32)
+
+    # Dataset and DataLoader
+    class TextDataset(Dataset):
+        def __init__(self, texts, labels):
+            self.texts = texts
+            self.labels = labels
+    
+        def __len__(self):
+            return len(self.texts)
+    
+        def __getitem__(self, idx):
+            return self.texts[idx], self.labels[idx]
+
+    dataset = TextDataset(X, y)
+    dataloader = DataLoader(dataset, batch_size=2, shuffle=True)
+
+    # Define the model
+    class LSTMModel(nn.Module):
+        def __init__(self, vocab_size, embed_size, hidden_size, output_size):
+            super(LSTMModel, self).__init__()
+            self.embedding = nn.Embedding(vocab_size, embed_size)
+            self.lstm = nn.LSTM(embed_size, hidden_size, batch_first=True)
+            self.fc = nn.Linear(hidden_size, output_size)
+            self.sigmoid = nn.Sigmoid()
+    
+        def forward(self, x):
+            x = self.embedding(x)
+            _, (hn, _) = self.lstm(x)
+            out = self.fc(hn[-1])
+            out = self.sigmoid(out)
+            return out
+
+    # Instantiate the model
+    model = LSTMModel(vocab_size=10000, embed_size=64, hidden_size=64, output_size=1)
+
+    # Loss and optimizer
+    criterion = nn.BCELoss()
+    optimizer = optim.Adam(model.parameters(), lr=0.001)
+
+    # Training loop
+    for epoch in range(10):
+        for texts, labels in dataloader:
+            outputs = model(texts)
+            loss = criterion(outputs, labels.unsqueeze(1))
+        
+            optimizer.zero_grad()
+            loss.backward()
+            optimizer.step()
+
+        print(f'Epoch {epoch+1}, Loss: {loss.item():.4f}')
+
+    # Example prediction
+    with torch.no_grad():
+        predictions = model(X)
+        print("Predictions:", predictions)
+
