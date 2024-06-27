@@ -1,6 +1,6 @@
 # Artificial Intelligence Study
 
-## Stanford Alpaca Study Note
+## [Stanford Alpaca Study Note](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/Stanford%20Alpaca%20Study%20Note.md)
 
 [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca?tab=readme-ov-file#data-release)
 
@@ -8,9 +8,10 @@ By studying this practical example to gain a deeper understanding of artificial 
 
 ---
 
-## LLM Roadmap
+## [LLM Roadmap](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md)
 
-The LLM roadmap is divided into three main sections: LLM Fundamentals, LLM Scientist, and LLM Engineer. Each section covers essential topics and skills necessary for understanding, developing, and deploying large language models (LLMs).
+The LLM roadmap is divided into three main sections: LLM Fundamentals, LLM Scientist, and LLM Engineer.
+Each section covers essential topics and skills necessary for understanding, developing, and deploying large language models (LLMs).
 
 ## License
 
