@@ -17,11 +17,11 @@
 ||[Evaluation](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#evaluation)|Traditional metrics, General benchmarks, Task-specific benchmarks, Human evaluation|
 ||[Quantization](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#quantization)|Base techniques, GGUF and llama.cpp, GPTQ and EXL2, AWQ|
 ||[New Trends](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#new-trends)|Positional embeddings, Model merging, Mixture of Experts, Multimodal models|
-|LLM Fundamentals Roadmap|Mathematics for Machine Learning|Linear Algebra, Calculus, Probability and Statistics|
-||Python for Machine Learning|Python Basics, Data Science Libraries, Data Preprocessing|
-||Machine Learning|Supervised Learning, Unsupervised Learning, Model Evaluation|
-||Neural Networks|Fundamentals, Training and Optimization, Overfitting, Implement an MLP|
-||Natural Language Processing|Text Preprocessing, Feature Extraction Techniques, Word Embeddings, Recurrent Neural Networks|
+|LLM Fundamentals Roadmap|[Mathematics for Machine Learning](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#mathematics-for-machine-learning)|Linear Algebra, Calculus, Probability and Statistics|
+||[Python for Machine Learning](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#python-for-machine-learning)|Python Basics, Data Science Libraries, Data Preprocessing|
+||[Machine Learning](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#machine-learning)|Supervised Learning, Unsupervised Learning, Model Evaluation|
+||[Neural Networks](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#neural-networks)|Fundamentals, Training and Optimization, Overfitting, Implement an MLP|
+||[Natural Language Processing](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#natural-language-processing)|Text Preprocessing, Feature Extraction Techniques, Word Embeddings, Recurrent Neural Networks|
 
 ---
 
