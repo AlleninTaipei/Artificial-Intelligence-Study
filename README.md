@@ -8,6 +8,16 @@ By studying this practical example to gain a deeper understanding of artificial 
 
 ---
 
+## [Get to know Instruction Dataset](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/Get%20to%20know%20Instruction%20Dataset.md#get-to-know-instruction-dataset)
+
+Use an existing dataset and convert it into an instruction dataset.
+
+Started with an existing dataset (the Alpaca dataset from Hugging Face).
+Download and save this dataset using the Hugging Face datasets library.
+Load this saved dataset and convert it into a single JSON file with a specific format which is essentially an instruction-output format.
+
+---
+
 ## [LLM Roadmap](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md)
 
 The LLM roadmap is divided into three main sections: LLM Fundamentals, LLM Scientist, and LLM Engineer.
