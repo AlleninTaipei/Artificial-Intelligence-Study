@@ -18,6 +18,12 @@ Load this saved dataset and convert it into a single JSON file with a specific f
 
 ---
 
+## [Get to know Dataset in Parquet Files](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/Get%20to%20know%20Dataset%20in%20Parquet%20Files.md)
+
+Understanding Dataset techniques helps in better utilizing the training data and fine-tuning your language models for specific applications.
+
+---
+
 ## [LLM Roadmap](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md)
 
 The LLM roadmap is divided into three main sections: LLM Fundamentals, LLM Scientist, and LLM Engineer.
