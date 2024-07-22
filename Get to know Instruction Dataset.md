@@ -80,7 +80,7 @@ print(f"Saved {len(_alpaca_no_inpu_data)} examples to alpaca_no_input.json")
     "instruction": "Describe a time when you had to make a difficult decision.",
     "output": "I had to make a difficult decision when I was working as a project manager at a construction company. I was in charge of a project that needed to be completed by a certain date in order to meet the client’s expectations. However, due to unexpected delays, we were not able to meet the deadline and so I had to make a difficult decision. I decided to extend the deadline, but I had to stretch the team’s resources even further and increase the budget. Although it was a risky decision, I ultimately decided to go ahead with it to ensure that the project was completed on time and that the client’s expectations were met. The project was eventually successfully completed and this was seen as a testament to my leadership and decision-making abilities."
   },
-}
+]
 ```
 
 ## Fine-tune sample code
