@@ -126,4 +126,9 @@ Index: []
 |-|-|
 |Used for optimizing models based on user preferences or specific criteria. Applied to train.pq, it involves fine-tuning the model to choose preferred responses.|Used for training models to predict the next word in a sequence, learning the causal relationships in language. Applied to train_full.pq, it helps the model generate coherent and contextually appropriate text.|
 
+|Direct Preference Optimization (DPO)|Open Assistant (OASST)|
+|-|-|
+|DPO is a technique used in machine learning, particularly in reinforcement learning and recommendation systems, to optimize a model based on direct user preferences or feedback. Instead of relying solely on implicit signals or indirect metrics, DPO uses explicit user preferences to guide the training process. This can lead to more accurate and user-centric models, as the optimization process directly aligns with what users prefer or find valuable.|OASST is an open-source project aimed at creating a high-quality, free, and accessible conversational AI. The goal of OASST is to develop an assistant that can engage in natural, informative, and helpful conversations with users. By being open-source, OASST encourages collaboration and contributions from the global community, promoting transparency, innovation, and inclusivity in the development of conversational AI technologies.|
 
+* Open Assistant (OASST) is broader in scope. It's an open-source project aimed at creating advanced conversational AI systems. These systems can involve various techniques and models, including but not limited to causal language modeling. The primary goal of OASST is to develop high-quality, open, and accessible conversational agents that can interact with users in natural and helpful ways.
+So, while OASST might employ causal language modeling as one of its methods, it encompasses a wider range of technologies and goals aimed at building comprehensive conversational AI.
