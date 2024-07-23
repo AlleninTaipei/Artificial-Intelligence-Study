@@ -170,7 +170,7 @@
 |-|-|-|
 |FlashAttention/FlashAttention-2|High|By breaking the attention computation into smaller chunks and reducing intermediate read/write operations, FlashAttention optimizes memory usage, significantly lowering the VRAM requirements.|
 |[Mixed Precision Training](https://arxiv.org/abs/1710.03740) (FP16/BFloat16)|High|Mixed precision training uses 16-bit floats instead of 32-bit floats, effectively halving the memory requirements for storing weights and activations, thus reducing VRAM usage.|
-|Gradient Checkpointing|High|This technique saves memory by recomputing intermediate activations during the backward pass instead of storing them, reducing VRAM consumption at the cost of additional computation.|
+|[Gradient Checkpointing](https://github.com/cybertronai/gradient-checkpointing)|High|This technique saves memory by recomputing intermediate activations during the backward pass instead of storing them, reducing VRAM consumption at the cost of additional computation.|
 |Memory Mapping and Swapping (Offloading)|Moderate|Techniques like ZeRO-Offload (used in DeepSpeed) offload certain parts of the model to CPU memory, reducing VRAM usage but potentially increasing data transfer overhead.|
 |Model Parallelism (Tensor and Pipeline Parallelism)|Variable|Distributes the model across multiple GPUs to fit larger models into memory. The efficiency depends on the inter-GPU communication overhead and the model architecture.|
 
