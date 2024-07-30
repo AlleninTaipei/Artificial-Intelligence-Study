@@ -33,7 +33,7 @@
 |Bit packing|Storage of integers is usually done with dedicated 32 or 64 bits per integer. This allows more efficient storage of small integers.|
 |Run length encoding (RLE)|When the same value occurs multiple times, a single value is stored once along with the number of occurrences. Parquet implements a combined version of bit packing and RLE, in which the encoding switches based on which produces the best compression results.|
 
-### Python code toview Parquet and CSV Files
+### Python code to view Parquet and CSV Files
 
 ```python
 import pandas as pd
