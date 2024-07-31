@@ -1,18 +1,16 @@
 # Stanford Alpaca Study Note
 
-## Overview
-
-### Introduction
+## Introduction
 
 [Alpaca 7B](https://crfm.stanford.edu/2023/03/13/alpaca.html) is an instruction-following model.
 
 There are two important challenges to training a high-quality instruction-following model under an academic budget: **a strong pretrained language model** and **high-quality instruction-following data**. The first challenge is addressed with the recent release of Meta’s new [LLaMA](https://arxiv.org/abs/2212.10560) models. For the second challenge, the [self-instruct](https://arxiv.org/abs/2212.10560) paper suggests using an existing strong language model to automatically generate instruction data. In particular, Alpaca is a language model fine-tuned using supervised learning from a LLaMA 7B model on 52K instruction-following demonstrations generated from OpenAI’s text-davinci-003.
 
-### Motivation and Challenges
+## Motivation and Challenges
 
 Instruction-following models like GPT-3.5 (text-davinci-003), ChatGPT, Claude, and Bing Chat are powerful but still exhibit issues such as generating false information, social biases, and toxic language. Academic research on these models has been challenging due to the lack of accessible models comparable to proprietary systems like text-davinci-003. Alpaca aims to fill this gap by providing an accessible and research-oriented alternative.
 
-### Training recipe
+## Technical Insights and Illustration
 
 |Items|Description|
 |-|-|
@@ -20,9 +18,7 @@ Instruction-following models like GPT-3.5 (text-davinci-003), ChatGPT, Claude, a
 |Instruction-following data|Starting with the 175 human-written instruction-output pairs from the [self-instruct seed set](https://github.com/yizhongw/self-instruct), text-davinci-003 was prompted to generate more instructions using the seed set as in-context examples. The self-instruct method was improved by simplifying the [generation pipeline](https://github.com/tatsu-lab/stanford_alpaca#data-generation-process) and significantly reducing the cost.|
 |**Fine-Tuning**|Fine-tuning was performed using Hugging Face’s training framework with techniques like Fully Sharded Data Parallel and mixed precision training. **This process took 3 hours on 8 80GB A100 GPUs, costing under $100 on cloud compute platforms.**|
 
-### Technical Insights and Illustration
-
-#### Pipeline Illustration
+### Pipeline Illustration
 
 |Step|Description|
 |-|-|
@@ -30,24 +26,12 @@ Instruction-following models like GPT-3.5 (text-davinci-003), ChatGPT, Claude, a
 |2. Data Expansion|Use text-davinci-003 to expand the seed set, generating 52K unique instruction-output pairs.|
 |3. Fine-Tuning|Fine-tune the LLaMA 7B model on the expanded dataset.|
 
-#### Training Efficiency
+### Training Efficiency
 
 |Aspect|Details|
 |-|-|
 |Infrastructure|Utilized Hugging Face’s framework, Fully Sharded Data Parallel, and mixed precision training for efficient processing.|
 |Cost|The fine-tuning process was cost-effective, with total costs kept below $600 by efficiently using cloud resources.|
-
-### Conclusion
-
-Initially, Alpaca was made available through a public demo to disseminate research findings. However, due to hosting costs and content filter inadequacies, the demo was disabled after achieving its primary goal of enabling broad academic engagement.
-
-Alpaca represents a significant step towards accessible and affordable instruction-following models in academia. By leveraging existing strong language models and innovative data generation methods, Alpaca demonstrates that high-quality instruction-following models can be developed with relatively low resources, promoting further research and development in this area.
-
----
-
-## Assets released
-
-[Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca) : An Instruction-following LLaMA Model
 
 ### Data Release
 
@@ -97,6 +81,12 @@ pip install deepspeed
 
 * The **DeepSpeed library** also provides some helpful functions to estimate memory usage.
 **LoRA fine-tunes low-rank slices of the query, key, and value embedding heads. This can reduce the total memory footprint from 112GB to about 7x4=28GB.**
+
+### Conclusion
+
+Initially, Alpaca was made available through a public demo to disseminate research findings. However, due to hosting costs and content filter inadequacies, the demo was disabled after achieving its primary goal of enabling broad academic engagement.
+
+Alpaca represents a significant step towards accessible and affordable instruction-following models in academia. By leveraging existing strong language models and innovative data generation methods, Alpaca demonstrates that high-quality instruction-following models can be developed with relatively low resources, promoting further research and development in this area.
 
 ---
 
