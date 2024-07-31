@@ -18,22 +18,18 @@ Instruction-following models like GPT-3.5 (text-davinci-003), ChatGPT, Claude, a
 |Instruction-following data|Starting with the 175 human-written instruction-output pairs from the [self-instruct seed set](https://github.com/yizhongw/self-instruct), text-davinci-003 was prompted to generate more instructions using the seed set as in-context examples. The self-instruct method was improved by simplifying the [generation pipeline](https://github.com/tatsu-lab/stanford_alpaca#data-generation-process) and significantly reducing the cost.|
 |**Fine-Tuning**|Fine-tuning was performed using Hugging Face’s training framework with techniques like Fully Sharded Data Parallel and mixed precision training. **This process took 3 hours on 8 80GB A100 GPUs, costing under $100 on cloud compute platforms.**|
 
-### Pipeline Illustration
-
-|Step|Description|
+|Pipeline Illustration|Description|
 |-|-|
 |1. Seed Set Creation|Start with a small, manually created seed set of 175 instruction-output pairs.|
 |2. Data Expansion|Use text-davinci-003 to expand the seed set, generating 52K unique instruction-output pairs.|
 |3. Fine-Tuning|Fine-tune the LLaMA 7B model on the expanded dataset.|
 
-### Training Efficiency
-
-|Aspect|Details|
+|Training Efficiency|Details|
 |-|-|
 |Infrastructure|Utilized Hugging Face’s framework, Fully Sharded Data Parallel, and mixed precision training for efficient processing.|
 |Cost|The fine-tuning process was cost-effective, with total costs kept below $600 by efficiently using cloud resources.|
 
-### Data Release
+## Dataset
 
 alpaca_data.json contains 52K instruction-following data for fine-tuning the Alpaca model.
 
@@ -49,7 +45,7 @@ alpaca_data.json contains 52K instruction-following data for fine-tuning the Alp
             "output": "1.Eat a balanced diet and make sure to include plenty of fruits and vegetables. \n2. Exercise regularly to keep your body active and strong. \n3. Get enough sleep and maintain a consistent sleep schedule."
         },
 
-### Addressing OOM
+## Addressing OOM
 
 **Naively, fine-tuning a 7B model requires about 7 x 4 x 4 = 112 GB of VRAM.**
 Commands given above enable parameter sharding, so no redundant model copy is stored on any GPU. If you'd like to further reduce the memory footprint, here are some options:
@@ -82,7 +78,7 @@ pip install deepspeed
 * The **DeepSpeed library** also provides some helpful functions to estimate memory usage.
 **LoRA fine-tunes low-rank slices of the query, key, and value embedding heads. This can reduce the total memory footprint from 112GB to about 7x4=28GB.**
 
-### Conclusion
+## Conclusion
 
 Initially, Alpaca was made available through a public demo to disseminate research findings. However, due to hosting costs and content filter inadequacies, the demo was disabled after achieving its primary goal of enabling broad academic engagement.
 
