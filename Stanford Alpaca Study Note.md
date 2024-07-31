@@ -100,7 +100,7 @@ This script is for generating instruction-following data using a language model 
 |`generate_instruction_following_data(...)`|The main function to generate the instruction-following data. It loads seed tasks, prepares the model input, generates responses, and filters the results. It also manages the progress and saves the generated data.|
 |`main(task, **kwargs)`|Uses the fire library to run a specified task with provided arguments.|
 
-* These files cover a range of functionalities, including **machine learning model training**, **token management**, **dataset preparation**, **interaction with the OpenAI API**, and **JSON handling**.
+* Below files cover a range of functionalities, including **machine learning model training**, **token management**, **dataset preparation**, **interaction with the OpenAI API**, and **JSON handling**.
 
 ### `train.py`
 
