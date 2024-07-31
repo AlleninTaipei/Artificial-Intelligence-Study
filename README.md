@@ -2,8 +2,6 @@
 
 ## [Stanford Alpaca Study Note](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/Stanford%20Alpaca%20Study%20Note.md)
 
-[Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca?tab=readme-ov-file#data-release)
-
 By studying this practical example to gain a deeper understanding of artificial intelligence and large language models.
 
 ---
