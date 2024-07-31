@@ -65,94 +65,6 @@ alpaca_data.json contains 52K instruction-following data for fine-tuning the Alp
             "output": "1.Eat a balanced diet and make sure to include plenty of fruits and vegetables. \n2. Exercise regularly to keep your body active and strong. \n3. Get enough sleep and maintain a consistent sleep schedule."
         },
 
-### Data Generation Process
-
-Built on the data generation pipeline from self-instruct and made the following modifications:
-
-* Used `text-davinci-003` to generate the instruction data instead of `davinci`.
-* Wrote a new prompt (`prompt.txt`) that explicitly gave the requirement of instruction generation to `text-davinci-003`.
-
-        You are asked to come up with a set of 20 diverse task instructions. These task instructions will be given to a GPT model and we will evaluate the GPT model for completing the instructions.
-
-        Here are the requirements:
-        1. Try not to repeat the verb for each instruction to maximize diversity.
-        2. The language used for the instruction also should be diverse. For example, you should combine questions with imperative instrucitons.
-        3. The type of instructions should be diverse. The list should include diverse types of tasks like open-ended generation, classification, editing, etc.
-        2. A GPT language model should be able to complete the instruction. For example, do not ask the assistant to create any visual or audio output. For another example, do not ask the assistant to wake you up at 5pm or set a reminder because it cannot perform any action.
-        3. The instructions should be in English.
-        4. The instructions should be 1 to 2 sentences long. Either an imperative sentence or a question is permitted.
-        5. You should generate an appropriate input to the instruction. The input field should contain a specific example provided for the instruction. It should involve realistic data and should not contain simple placeholders. The input should provide substantial content to make the instruction challenging but should ideally not exceed 100 words.
-        6. Not all instructions require input. For example, when a instruction asks about some general information, "what is the highest peak in the world", it is not necssary to provide a specific context. In this case, we simply put "<noinput>" in the input field.
-        7. The output should be an appropriate response to the instruction and the input. Make sure the output is less than 100 words.
-        
-        List of 20 tasks:
-
-* Adopted much more aggressive batch decoding, i.e., generating 20 instructions at once, which significantly reduced the cost of data generation.
-* Simplified the data generation pipeline by discarding the difference between classification and non-classification instructions.
-* Generated a single instance for each instruction, instead of 2 to 3 instances as in [1].
-
-### Fine-tuning
-
-* standard Hugging Face training code
-
-|Hyperparameter|LLaMA-7B|LLaMA-13B|
-|-|-|-|
-|Batch size|128|128|
-|Learning rate|2e-5|1e-5|
-|Epochs|3|5|
-|Max length|512|512|
-|Weight decay|0|0|
-
-* Below is a command that fine-tunes LLaMA-7B with our dataset on a machine with 4 A100 80G GPUs in FSDP full_shard mode. 
-
-        torchrun --nproc_per_node=4 --master_port=<your_random_port> train.py \
-            --model_name_or_path <your_path_to_hf_converted_llama_ckpt_and_tokenizer> \
-            --data_path ./alpaca_data.json \
-            --bf16 True \
-            --output_dir <your_output_dir> \
-            --num_train_epochs 3 \
-            --per_device_train_batch_size 4 \
-            --per_device_eval_batch_size 4 \
-            --gradient_accumulation_steps 8 \
-            --evaluation_strategy "no" \
-            --save_strategy "steps" \
-            --save_steps 2000 \
-            --save_total_limit 1 \
-            --learning_rate 2e-5 \
-            --weight_decay 0. \
-            --warmup_ratio 0.03 \
-            --lr_scheduler_type "cosine" \
-            --logging_steps 1 \
-            --fsdp "full_shard auto_wrap" \
-            --fsdp_transformer_layer_cls_to_wrap 'LlamaDecoderLayer' \
-            --tf32 True
-
-* The same script also works for OPT fine-tuning. Here's an example for fine-tuning OPT-6.7B
-
-        torchrun --nproc_per_node=4 --master_port=<your_random_port> train.py \
-            --model_name_or_path "facebook/opt-6.7b" \
-            --data_path ./alpaca_data.json \
-            --bf16 True \
-            --output_dir <your_output_dir> \
-            --num_train_epochs 3 \
-            --per_device_train_batch_size 4 \
-            --per_device_eval_batch_size 4 \
-            --gradient_accumulation_steps 8 \
-            --evaluation_strategy "no" \
-            --save_strategy "steps" \
-            --save_steps 2000 \
-            --save_total_limit 1 \
-            --learning_rate 2e-5 \
-            --weight_decay 0. \
-            --warmup_ratio 0.03 \
-            --lr_scheduler_type "cosine" \
-            --logging_steps 1 \
-            --fsdp "full_shard auto_wrap" \
-            --fsdp_transformer_layer_cls_to_wrap 'OPTDecoderLayer' \
-            --tf32 True
-
-* Note the given training script is meant to be simple and easy to use, and is not particularly optimized. To run on more gpus, you may prefer to turn down `gradient_accumulation_steps` to keep a global batch size of 128. Global batch size has not been tested for optimality.
-
 ### Addressing OOM
 
 **Naively, fine-tuning a 7B model requires about 7 x 4 x 4 = 112 GB of VRAM.**
@@ -189,6 +101,18 @@ pip install deepspeed
 ---
 
 ## Code
+
+### `generate_instruction.py`
+
+This script is for generating instruction-following data using a language model like GPT-3 (specifically text-davinci-003). It uses human-written seed instructions and machine-generated instructions to create new ones. The process involves encoding prompts, generating responses, post-processing the responses, and filtering out irrelevant or inappropriate instructions.
+
+|main components|Data Generation Process|
+|-|-|
+|`encode_prompt(prompt_instructions)`|Combines multiple prompt instructions into a single string, which is used as the input to the model.|
+|`post_process_gpt3_response(num_prompt_instructions, response)`|Processes the raw output from the model, filtering out instructions based on various criteria (e.g., length, content).|
+|`find_word_in_string(w, s)`|Checks if a word exists in a string.|
+|`generate_instruction_following_data(...)`|The main function to generate the instruction-following data. It loads seed tasks, prepares the model input, generates responses, and filters the results. It also manages the progress and saves the generated data.|
+|`main(task, **kwargs)`|Uses the fire library to run a specified task with provided arguments.|
 
 * These files cover a range of functionalities, including **machine learning model training**, **token management**, **dataset preparation**, **interaction with the OpenAI API**, and **JSON handling**.
 
