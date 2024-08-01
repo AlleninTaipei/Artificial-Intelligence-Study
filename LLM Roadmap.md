@@ -1,8 +1,8 @@
 # LLM Roadmap
 
-* [Source: mlabonne/llm-course](https://github.com/mlabonne/llm-course/tree/main)
+* [Source: mlabonne/llm-course Large Language Model Course](https://github.com/mlabonne/llm-course/tree/main)
 * Organize it in a way that is easy for me to understand and different for reading.
-* By studying this repository to gain a deeper understanding of large language models.
+* By studying this repository [(Large Language Model Course)](https://github.com/mlabonne/llm-course/tree/main) to gain a deeper understanding of large language models.
 
 |Roadmap Section|Subsection|Topics|
 |-|-|-|
