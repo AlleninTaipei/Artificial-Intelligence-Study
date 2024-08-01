@@ -1,5 +1,9 @@
 # LLM Roadmap
 
+* [Source: mlabonne/llm-course](https://github.com/mlabonne/llm-course/tree/main)
+* Organize it in a way that is easy for me to understand and different for reading.
+* By studying this repository to gain a deeper understanding of large language models.
+
 |Roadmap Section|Subsection|Topics|
 |-|-|-|
 |LLM Engineer Roadmap|[Running LLMs](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md#running-llms)|LLM APIs, Open-source LLMs, Prompt engineering, Structuring outputs|
