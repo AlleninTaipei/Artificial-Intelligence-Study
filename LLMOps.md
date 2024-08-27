@@ -1,6 +1,6 @@
 # LLMOps
 
-Large language model operations (LLMOps) is a discipline that combines several techniques – such as **prompt engineering and management,**, **deploying LLM agents**, and **LLM observability** – to optimize language models for specific contexts and make sure they provide the expected output to users.
+Large language model operations (LLMOps) is a discipline that combines several techniques – such as **prompt engineering and management**, **deploying LLM agents**, and **LLM observability** – to optimize language models for specific contexts and make sure they provide the expected output to users.
 
 ## Prompt Engineering
 
@@ -75,14 +75,14 @@ Observability for LLMs (Large Language Models) refers to the tools and processes
 ||**Interactive Analysis**: Tools enable engineers to perform exploratory data analysis (EDA) to understand and fix issues.|
 |**Latency and Performance Monitoring**|Observability solutions can also track performance metrics like API latency. This allows teams to identify prompt/response pairs that cause delays and investigate them further.|
 
-||How LLM Observability Helps|
+|How LLM Observability Helps|Notes|
 |-|-|
 |**Real-Time Monitoring:**|Engineers get instant insights into how the LLM is performing, allowing for quick adjustments and fixes.|
 |**Root Cause Analysis**|By understanding the structure and patterns of prompts and responses, engineers can pinpoint the exact cause of any issues.|
 |**Optimization and Fine-Tuning**|Continuous monitoring and analysis allow for ongoing optimization of the LLM and its prompts, leading to improved performance and user satisfaction.|
 |**Feedback Integration**|User feedback, such as ratings or comments, can be integrated into the observability process to ensure that the LLM's outputs align with user expectations.|
 
-||Example of a Problematic Cluster Workflow|
+|Problematic Cluster Workflow|Examples|
 |-|-|
 |**Detecting Issues**|The observability system detects a cluster of responses that users have rated poorly.|
 |**Analyzing the Cluster**|Engineers use the observability tool to analyze the cluster, looking for common patterns or issues within the responses.|
@@ -189,13 +189,13 @@ If you are building a RAG system, you are adding recent knowledge to a LLM appli
 |**New to prompt engineering**|We recommend experimenting with prompt templates and prompt engineering to ask better questions to your LLMs and to best structure your outputs. However, prompts do not add additional context to your user’s queries.|
 |**Fine-tuning your LLM**|We recommend fine-tuning your model to get better at specific tasks by providing your LLM explicit examples. Fine-tuning should be used after experimenting with performance improvements made by prompt engineering and by adding relevant content via RAG. This is due to the speed and cost of iteration, keeping retrieval indices up-to-date is more efficient than continuously fine-tuning and retraining LLMs.|
 
-|components of a RAG system|Detail|
+|Components of a RAG system|Notes|
 |-|-|
 |**Retrieval Engine**|This is the first step in the RAG process. It involves searching through a vast database of information to find relevant data that corresponds to the input query. This engine uses sophisticated algorithms to ensure the data retrieved is the most relevant and up-to-date.|
 |**Augmentation Engine**|Once the relevant data is retrieved, the augmentation engine comes into play. It integrates the retrieved data with the input query, enhancing the context and providing a more informed base for generating responses.|
 |**Generation Engine**|This is where the actual response is formulated. Using the augmented input, the generation engine, typically a sophisticated language model, creates a coherent and contextually relevant response. This response is not just based on the model’s preexisting knowledge but is enhanced by the external data sourced by the retrieval engine.|
 
-|successful RAG applications|Detail|
+|successful RAG applications|Notes|
 |-|-|
 |**Data Indexing**|Before RAG can retrieve information, the data must be aggregated and organized in an index. This index acts as a reference point for the retrieval engine.|
 |**Input Query Processing**|The user’s input is processed and understood by the system, forming the basis of the search query for the retrieval engine.|
