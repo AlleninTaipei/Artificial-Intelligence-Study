@@ -32,7 +32,7 @@ Understand LLMOps, architectural patterns, how to evaluate, fine tune & deploy H
 |||Deploy LLM on cloud|Major cloud providers<br>Deploy LLMs from HuggingFace on Sagemaker Endpoint<br>Sagemaker Jumpstart<br>SageMaker deployment of LLMs that you have pretrained or fine-tuned|
 ||Deploy using containers|Benefits of using containers<br>GPU and containers<br>Using Ollama|
 ||Using specialized hardware for inference|AWS Inferentia<br>Apple Neural engine|
-||Deployment on edge devices|Different types of edge devices<br>TensorFlow Lite<br>SageMaker Neo<br>ONNX|
+||Deployment on edge devices|Different types of edge devices<br>TensorFlow Lite<br>SageMaker Neo<br>ONNX<br>Using other tools|
 ||CI/CD Pipeline for LLM based applications|Fine-tuning Pipeline|
 ||Capturing endpoint statistics|Ways to capture endpoint statistics<br>Cloud provider endpoints|
 |Productionize LLM based projects|An Intelligent QA chatbot powered by Llama 2 Chat<br>LLM based recommendation system chatbot<br>Customer support chatbot using agents||
@@ -371,10 +371,24 @@ Safety, toxicity, biaseness are general evaluation topics application for all LL
 **Deploying multiple models**
 
 ### LLM Inference with Quantization
-**Quantize with AutoGPTQ**
-**Quantize with llama.cpp**
+
+Quantization involves mapping higher-precision model weights to a lower-precision. You can map 32-bit to 8-bit, or even 8-bit to 1-bit. 
+
+|Type|Sign|Exponent|Trailing significand field|Total bits|
+|-|-|-|-|-|
+|FP8 (E4M3)|1|4|3|8|
+|FP8 (E5M2)|1|5|2|8|
+|Half-precision|1|5|10|16|
+|Bfloat16|1|8|7|16|
+|TensorFloat-32|1|8|10|19|
+|Single-precision|1|8|23|32|
+
+**Quantize with AutoGPTQ**: Many open-sources models have their quantized versions already available. Check their model cards to understand the apis. To quantize any text model, you can use [AutoGPTQ library](https://github.com/AutoGPTQ/AutoGPTQ) that provide a simple API that apply GPTQ quantization (ther are also other methods) on language models.
+
+**Quantize with llama.cpp**, [quantize](https://github.com/ggerganov/llama.cpp/blob/master/examples/quantize/README.md) [What are Quantized LLMs?](https://www.tensorops.ai/post/what-are-quantized-llms)
 
 ### Deploy LLM on Local Machine
+
 **llama.cpp**
 **Ollama**
 **Transformers**
@@ -384,33 +398,51 @@ Safety, toxicity, biaseness are general evaluation topics application for all LL
 **Chat with RTX by Nvidia**
 
 ### Deploy LLM on cloud
-**Major cloud providers**
-**Deploy LLMs from HuggingFace on Sagemaker Endpoint**
+
+**Major cloud providers**: Cloud Run and Cloud Functions — is a serverless platform to deploy LLMs as lightweight, event-driven applications, ideal for smaller models or microservices.
+
+**Deploy LLMs from HuggingFace on Sagemaker Endpoint**, most easy way to quickly deploy HuggingFace model.
+
 **Sagemaker Jumpstart**
-**SageMaker deployment of LLMs that you have pretrained or fine-tuned**
+**SageMaker deployment of LLMs that you have pretrained or fine-tuned**, [example](https://github.com/aws/amazon-sagemaker-examples/tree/main)
 
 ### Deploy using containers
-**Benefits of using containers**
-**GPU and containers**
-**Using Ollama**
+
+**Benefits of using containers**: In the world of Service Oriented Architecture (SOA), containers are a blessing. Orchestrating large number of containers are a challange, but the benefits of a containerized service has numerous benefits when compared with an app running on Virtual Machines. Large Language Models have higher memory requirements compared to a classical web service. This means that we have to understand these memory requirements before containering LLMs or LLM based endpoints. Barring small number of cases, like when you generative model fits perfectly in 1 server and only 1 server is needed; barring such small number of instances, containerzing your LLM is advisable for production use cases. Scalability and infrastructure optimization — fine-grained dynamic and elastic provisioning of resources (CPU, GPU, memory, persistent volumes), dynamic scaling and maximized component/resource density to make best use of infrastructure resources. Operational consistency and Component portability — automation of build and deployment, reducing the range of skillsets required to operate many different environments. Portability across nodes, environments, and clouds, images can be built and run on any container platform enabling you to focus on open containerization standards such as Docker and Kubernetes.Service resiliency — Rapid re-start, ability to implement clean re-instatement, safe independent deployment, removing risk of destabilizing existing components and fine-grained roll-out using rolling upgrades, canary releases, and A/B testing.
+
+**GPU and containers**, [Running a Sample Workload with Docker](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/sample-workload.html), [The NVIDIA container stack is architected so that it can be targeted to support any container runtime in the ecosystem.](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/arch-overview.html)
+
+**Using Ollama**, you can write the Ollama installation and server execution commands in the Dockerfile.
 
 ### Using specialized hardware for inference
-**AWS Inferentia**
-**Apple Neural engine**
+
+**AWS Inferentia** [accelerators](https://aws.amazon.com/machine-learning/inferentia/?source=post_page-----060a4cb1a169--------------------------------) are designed by AWS to deliver high performance at the lowest cost in Amazon EC2 for your deep learning (DL) and generative AI inference applications. [AWS Trainium](https://aws.amazon.com/machine-learning/trainium/) is the machine learning (ML) chip that AWS purpose built for deep learning (DL) training of 100B+ parameter models. Each Amazon Elastic Compute Cloud (Amazon EC2) Trn1 instance deploys up to 16 Trainium accelerators to deliver a high-performance, low-cost solution for DL training in the cloud.
+
+**Apple Neural engine**, [ANE](https://apple.fandom.com/wiki/Neural_Engine) is the marketing name for a group of specialized cores functioning as a neural processing unit (NPU) dedicated to the acceleration of artificial intelligence operations and machine learning tasks.[1] They are part of system-on-a-chip (SoC) designs specified by Apple and fabricated by TSMC. Besides the Neural Engine, the most famous NPU is [Google’s TPU](https://en.wikipedia.org/wiki/Tensor_Processing_Unit) (or Tensor Processing Unit).
 
 ### Deployment on edge devices
-**Different types of edge devices**
-**TensorFlow Lite**
-**SageMaker Neo**
-**ONNX**
+
+**Different types of edge devices** include: Mobile devices, Connected cameras, Retail Kiosks, Sensors, Smart devices like smart parking meters, Cars and other similar products.
+
+**TensorFlow Lite** is a [mobile library](https://www.tensorflow.org/lite) for deploying models on mobile, microcontrollers and other edge devices.
+
+**SageMaker Neo**, [it](https://aws.amazon.com/sagemaker/neo/) enables developers to optimize machine learning models for inference on SageMaker in the cloud and supported devices at the edge.
+
+**ONNX** is a community project, a format built to represent machine learning models. If you have a model in one of the [ONNX supported frameworks](https://onnx.ai/supported-tools.html#buildModel), which includes all major ML frameworks, then it can optimize the model to maximize performance across hardware using one of the [supported accelerators](https://onnx.ai/supported-tools.html#deployModel) like Mace, NVIDIA, Optimum, Qualcomm, Synopsys, Tensorlfow, Windows, Vespa and more.
+
+**Using other tools**, if the edge device has its own developer kit like [NVIDIA IGX Orin](https://www.nvidia.com/en-us/edge-computing/products/igx/), then see the [official documentation](https://github.com/nvidia-holoscan/holohub/tree/main/tutorials/local-llama) for edge deployment. If your edge device has a kernel and supports containers then people have successfully run Code Llama and llama.cpp, for generative model inference. [ggerganov/whisper.cpp](https://github.com/ggerganov/whisper.cpp)
 
 ### CI/CD Pipeline for LLM based applications
-**Fine-tuning Pipeline**
+
+**Fine-tuning Pipeline**: Your model pipeline will vary depending on the architecture. For a RAG architecture, you will want to update your vector storage with new knowledge bases or updated articles Updating embeddings of only updated articles is a better choice than embedding the whole corpus everytime there is an update to any article. In a continous pretraining architecture, the Foundation model is continously pretrained no new data. To keep the model from degrading due to bad data, you need to have a robust pipeline with data checks, endpoint drift detection and rule/model based evaluations. An architecture that has a fine-tuned generative model, you can add rule based checks that are triggered with pre-commit everytime code changes are commited by developers.
 
 ### Capturing endpoint statistics
-**Ways to capture endpoint statistics**
-**Cloud provider endpoints**
 
+Latency = (TTFT, time to first token) + (TPOT, time per output token ) * (the number of tokens to be generated)
+
+**Ways to capture endpoint statistics**, for applications where latency is not crucial, you can add the inference output with endpoint metrics to persistent storage before returning the inference from your endpoint. If calculating endpoint metrics within the endpoint code is not feasible then simply store them in the storage and process the output in batches later on. For low-latency applications, adding logic to append the outputs to a persisten storage before returning the final predictions is not feasible. In such cases you can log/print the predictions and then process the logs async. To decouple endpoint metric calculation from your main inference logic, you can use a data stream. Inference code will log the outputs. Another service will index the logs and add them to a data stream. You process the logs in the stream or deliver the logs to a persistent storage and process them in batches.
+
+**Cloud provider endpoints**: Google Cloud, AWS and Azure, provide a pre-defined set of endpoint metrics out-of-the-box. The metrics include, latency, model initialisation time, 4XX errors, 5XX errors, invocations per instance, CPU utilisation, memory usage, disk usage and other general metrics. These all are good operational metrics and are used for activites like auto-scaling your endpoint and health determination.
 
 ### An Intelligent QA chatbot powered by Llama 2 Chat
 
@@ -421,8 +453,6 @@ Safety, toxicity, biaseness are general evaluation topics application for all LL
 [How to make a Recommender System Chatbot with LLMs](https://mrmaheshrajput.medium.com/how-to-make-a-recommender-system-chatbot-with-llms-770c12bbca4a)
 
 ### Customer support chatbot using agents
-
-ToDo
 
 ### Prompt compression
 
