@@ -42,5 +42,6 @@
 
 ## Sources
 
-* [Large Language Model Course - Maxime Labonne](https://github.com/mlabonne/llm-course)
-* [arXiv](https://arxiv.org/) is a community of volunteer authors, readers, moderators, advisory board members, supporting members, donors, and third-party collaborators that are supported by our staff at Cornell University.
+#### [Large Language Model Course - Maxime Labonne](https://github.com/mlabonne/llm-course)
+#### [arXiv](https://arxiv.org/) is a community of volunteer authors, readers, moderators, advisory board members, supporting members, donors, and third-party collaborators that are supported by our staff at Cornell University.
+#### The [Center for Research on Foundation Models](https://crfm.stanford.edu/) (CRFM) is an interdisciplinary initiative at the Stanford Institute for Human-Centered Artificial Intelligence (HAI) that makes fundamental advances in the study, development, and deployment of foundation models.
