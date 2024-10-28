@@ -9,6 +9,7 @@
 |[LLMOps](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLMOps.md#llmops)|As teams deploy large language models to production, the same challenges around performance and task measurement still exist. Hence, LLMOps is essential to scale large language models and deploy them to production effectively.|
 |[How to Productionize Large Language Models](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/How%20to%20Productionize%20Large%20Language%20Models.md)|LLM ops is not easy.|
 |[LLM Roadmap](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/LLM%20Roadmap.md)|Dr. Maxime Labonne: The LLM course is divided into three parts.<br>LLM Fundamentals covers essential knowledge about mathematics, Python, and neural networks.<br> The LLM Scientist focuses on building the best possible LLMs using the latest techniques.<br>The LLM Engineer focuses on creating LLM-based applications and deploying them.|
+|[Generate and Use Synthetic Data for Finetuning](https://github.com/AlleninTaipei/Artificial-Intelligence-Study/blob/main/Generate%20and%20Use%20Synthetic%20Data%20for%20Finetuning.md)|The process of collecting and annotating data is both time-consuming and expensive, leading to several challenges.|
 
 ## License
 
